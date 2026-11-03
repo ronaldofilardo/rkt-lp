@@ -8,7 +8,7 @@ export function FinalCTA() {
       aria-labelledby="final-cta-title"
       className="final-cta-bg px-3 py-16 sm:px-4 md:py-24 lg:px-6"
     >
-      <div className="mx-auto max-w-container text-center">
+      <div className="mx-auto max-w-container">
         <p className="reveal font-mono text-xs uppercase tracking-widest text-telemetry-volt">
           Comece agora
         </p>
@@ -25,7 +25,7 @@ export function FinalCTA() {
           Dados que fazem a diferença dentro e fora da quadra.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-start gap-3">
           <a
             href={buildSignupUrl({ origem: 'lp_final_cta' })}
             className="btn-cta-primary rounded-full bg-telemetry-blue px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-telemetry-blue-light active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-telemetry-blue-light"

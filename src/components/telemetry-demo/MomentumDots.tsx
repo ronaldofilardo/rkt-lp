@@ -14,9 +14,9 @@ export function MomentumDots({ totalPoints, p1Points, p1Initials, p2Initials, lo
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between text-xs">
-        <span className="font-mono font-semibold text-telemetry-volt">{p1Initials}</span>
+        <span className="font-mono font-semibold tabular-nums text-telemetry-volt">{p1Initials}</span>
         <span className="text-telemetry-text-muted">Pontos totais</span>
-        <span className="font-mono font-semibold text-telemetry-text-muted">{p2Initials}</span>
+        <span className="font-mono font-semibold tabular-nums text-telemetry-text-muted">{p2Initials}</span>
       </div>
       <div className="flex gap-1" aria-hidden="true">
         {Array.from({ length: DOTS }, (_, i) => {

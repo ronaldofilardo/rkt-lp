@@ -50,6 +50,9 @@ const config: Config = {
       fontSize: {
         'xs-extra': ['10px', { lineHeight: '1.2' }],
         'sm-extra': ['11px', { lineHeight: '1.3' }],
+        '4xl': ['clamp(2.25rem, 4vw, 3rem)', { lineHeight: '1.2' }],
+        '5xl': ['clamp(3rem, 5vw, 4rem)', { lineHeight: '1.1' }],
+        '6xl': ['clamp(3.75rem, 6vw, 5rem)', { lineHeight: '1' }],
       },
       borderRadius: {
         'radius-sm': '12px',

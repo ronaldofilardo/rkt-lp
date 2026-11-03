@@ -17,9 +17,9 @@ export const TYPOGRAPHY = {
     xl: ['1.25rem', { lineHeight: '1.75' }],
     '2xl': ['1.5rem', { lineHeight: '2' }],
     '3xl': ['1.875rem', { lineHeight: '2.25' }],
-    '4xl': ['2.25rem', { lineHeight: '2.5' }],
-    '5xl': ['3rem', { lineHeight: '1' }],
-    '6xl': ['3.75rem', { lineHeight: '1' }],
+    '4xl': ['clamp(2.25rem, 4vw, 3rem)', { lineHeight: '1.2' }],
+    '5xl': ['clamp(3rem, 5vw, 4rem)', { lineHeight: '1.1' }],
+    '6xl': ['clamp(3.75rem, 6vw, 5rem)', { lineHeight: '1' }],
   },
   fontWeight: {
     normal: '400',

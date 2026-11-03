@@ -13,7 +13,7 @@ export function TelemetryDemo() {
     <section
       id="telemetria"
       aria-labelledby="telemetria-title"
-      className="border-b border-telemetry-border/10 bg-telemetry-base px-3 py-12 sm:px-4 md:py-16 lg:px-6 lg:py-24"
+      className="border-b border-telemetry-border/10 bg-telemetry-base px-3 py-10 sm:px-4 md:py-14 lg:px-6"
     >
       <div className="mx-auto max-w-container space-y-10">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -31,14 +31,14 @@ export function TelemetryDemo() {
           <div className="flex shrink-0 items-center gap-3 rounded-2xl border border-telemetry-border/10 bg-telemetry-card px-4 py-2">
             <div className="text-right">
               <p className="font-mono text-xs text-telemetry-text-muted">Placar final</p>
-              <p className="font-mono text-sm font-bold text-telemetry-text-primary">
+              <p className="font-mono text-sm font-bold tabular-nums text-telemetry-text-primary">
                 {match.scoreSummary.sets}
               </p>
             </div>
             <div className="h-8 w-px bg-telemetry-border/10" />
             <div>
               <p className="font-mono text-xs text-telemetry-text-muted">Duração</p>
-              <p className="font-mono text-sm font-bold text-telemetry-text-primary">
+              <p className="font-mono text-sm font-bold tabular-nums text-telemetry-text-primary">
                 {match.duration.totalMinutes} min
               </p>
             </div>
@@ -47,7 +47,7 @@ export function TelemetryDemo() {
 
         <TelemetryPanel match={match} />
 
-        <p className="text-center text-sm text-telemetry-text-muted">
+        <p className="text-sm text-telemetry-text-muted">
           Estes dados são simulados para demonstração.{' '}
           <a
             href={buildSignupUrl({ origem: 'lp_telemetria' })}
@@ -58,7 +58,7 @@ export function TelemetryDemo() {
           para registrar partidas reais.
         </p>
 
-        <p className="text-center text-sm text-telemetry-text-muted">
+        <p className="text-sm text-telemetry-text-muted">
           <Link href="/guia/estatisticas-de-tenis" className={CONTEXT_LINK}>
             Guia de estatísticas de tênis
           </Link>{' '}

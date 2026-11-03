@@ -33,7 +33,8 @@ test('Cards de público apontam para as rotas /para-*; cadastro fica no CTA', ()
   }
   assert.ok(!AUDIENCE_CARDS.find((c) => c.id === 'espectador')?.path, 'espectador não tem página própria');
   assert.ok(read('src/components/audience/AudienceCard.tsx').includes('href={card.path}'));
-  assert.ok(read('src/components/audience/TargetAudience.tsx').includes('buildSignupUrl'), 'CTA secundário mantém cadastro');
+  assert.ok(read('src/components/audience/AudienceTable.tsx').includes('buildSignupUrl'), 'CTA secundário mantém cadastro (desktop)');
+  assert.ok(read('src/components/audience/AudienceTabs.tsx').includes('buildSignupUrl'), 'CTA secundário mantém cadastro (mobile)');
 });
 
 test('Micro-ancoragem de confiança removida do Hero e do FinalCTA', () => {

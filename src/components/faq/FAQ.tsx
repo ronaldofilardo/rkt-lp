@@ -9,7 +9,7 @@ export function FAQ() {
       className="border-b border-telemetry-border/10 bg-telemetry-base px-3 py-12 sm:px-4 md:py-16 lg:px-6 lg:py-24"
     >
       <div className="mx-auto max-w-container">
-        <div className="mx-auto max-w-2xl space-y-8">
+        <div className="max-w-2xl space-y-8">
           <header className="space-y-2">
             <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt">
               Dúvidas frequentes
