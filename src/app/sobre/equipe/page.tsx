@@ -31,10 +31,7 @@ export default function EquipePage() {
               <h2 className="text-lg font-bold text-telemetry-text-primary">{member.name}</h2>
               <p className="mt-1 text-xs font-mono text-telemetry-volt">{member.role}</p>
               <p className="mt-3 text-sm leading-relaxed text-telemetry-text-muted">
-                {member.id === 'ronaldo'
-                  ? 'Arquiteto de software desde 1996, criador da metodologia STE-DEV e fundador de engenharia do RKT Tennis.'
-                  : 'Fundador e produto do RKT Tennis. Mais informações em breve.'
-                }
+                {member.bio}
               </p>
             </div>
           ))}

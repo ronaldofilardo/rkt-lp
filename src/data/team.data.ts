@@ -1,8 +1,11 @@
+import { RONALDO_LEAD } from './content/ronaldo.data';
+
 export interface TeamMember {
   readonly id: string;
   readonly name: string;
   readonly role: string;
   readonly initials: string;
+  readonly bio?: string;
 }
 
 export const TEAM_MEMBERS: readonly TeamMember[] = [
@@ -11,6 +14,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
     name: 'Ronaldo Filardo',
     role: 'Fundador & Engenharia',
     initials: 'RF',
+    bio: RONALDO_LEAD,
   },
   {
     id: 'eduardo',
