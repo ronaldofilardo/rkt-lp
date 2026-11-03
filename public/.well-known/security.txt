@@ -1,0 +1,4 @@
+Contact: mailto:suporte@omni-sistemas.com
+Expires: 2027-10-31T23:59:59.000Z
+Preferred-Languages: pt-BR
+Canonical: https://rkt-app.com/.well-known/security.txt

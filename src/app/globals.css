@@ -1,0 +1,375 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+
+  --telemetry-base: 10 15 29;
+  --telemetry-card: 17 24 39;
+  --telemetry-elevated: 30 41 59;
+  --telemetry-active: 15 23 42;
+  --telemetry-border: 255 255 255;
+  --telemetry-text-primary: 248 250 252;
+  --telemetry-text-muted: 148 163 184;
+  --telemetry-volt: 204 255 0;
+  --telemetry-blue: 37 99 235;
+  --telemetry-blue-light: 59 130 246;
+  --telemetry-orange: 234 88 12;
+  --telemetry-orange-light: 226 88 34;
+  --telemetry-error: 239 68 68;
+  --telemetry-alert: 245 158 11;
+  --telemetry-alert-light: 251 191 36;
+  --telemetry-court-clay: 196 98 58;
+  --telemetry-court-grass: 45 138 62;
+  --telemetry-surface: 15 23 42;
+  --telemetry-court-hard: 30 77 123;
+
+  --telemetry-glow-volt: 0 0 12px rgba(204, 255, 0, 0.28);
+  --telemetry-glow-blue: 0 0 12px rgba(37, 99, 235, 0.30);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.dark):not([data-theme="dark"]) {
+    color-scheme: light;
+
+    --telemetry-base: 241 245 249;
+    --telemetry-card: 255 255 255;
+    --telemetry-elevated: 248 250 252;
+    --telemetry-active: 226 232 240;
+    --telemetry-border: 15 23 42;
+    --telemetry-text-primary: 15 23 42;
+    --telemetry-text-muted: 100 116 139;
+    --telemetry-volt: 101 163 13;
+    --telemetry-blue: 37 99 235;
+    --telemetry-blue-light: 59 130 246;
+    --telemetry-orange: 234 88 12;
+    --telemetry-orange-light: 226 88 34;
+    --telemetry-error: 220 38 38;
+    --telemetry-alert: 217 119 6;
+    --telemetry-alert-light: 245 158 11;
+    --telemetry-court-clay: 196 98 58;
+    --telemetry-court-grass: 45 138 62;
+    --telemetry-surface: 248 250 252;
+    --telemetry-court-hard: 30 77 123;
+
+    --telemetry-glow-volt: 0 0 12px rgba(101, 163, 13, 0.2);
+    --telemetry-glow-blue: 0 0 12px rgba(37, 99, 235, 0.2);
+  }
+}
+
+html[data-theme="light"],
+body[data-theme="light"] {
+  color-scheme: light;
+
+  --telemetry-base: 241 245 249;
+  --telemetry-card: 255 255 255;
+  --telemetry-elevated: 248 250 252;
+  --telemetry-active: 226 232 240;
+  --telemetry-border: 15 23 42;
+  --telemetry-text-primary: 15 23 42;
+  --telemetry-text-muted: 100 116 139;
+  --telemetry-volt: 101 163 13;
+  --telemetry-blue: 37 99 235;
+  --telemetry-blue-light: 59 130 246;
+  --telemetry-orange: 234 88 12;
+  --telemetry-orange-light: 226 88 34;
+  --telemetry-error: 220 38 38;
+  --telemetry-alert: 217 119 6;
+  --telemetry-alert-light: 245 158 11;
+  --telemetry-court-clay: 196 98 58;
+  --telemetry-court-grass: 45 138 62;
+  --telemetry-surface: 248 250 252;
+  --telemetry-court-hard: 30 77 123;
+}
+
+body {
+  background-color: rgb(var(--telemetry-base));
+  color: rgb(var(--telemetry-text-primary));
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* Header fixo: âncoras não ficam escondidas (mobile tem 2ª linha de menu) */
+html {
+  scroll-padding-top: 6.5rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+}
+
+/* ── Hero Artifacts: fade-in e flutuação ───────────────── */
+.hero-artifacts .artifact-a,
+.hero-artifacts .artifact-b {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-artifacts.hero-visible .artifact-a { opacity: 1; transform: translateY(0); }
+.hero-artifacts.hero-visible .artifact-b { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.hero-artifacts.hero-visible .artifact-a { animation: hero-float 5s ease-in-out 0.6s infinite; }
+.hero-artifacts.hero-visible .artifact-b { animation: hero-float 6s ease-in-out 1.2s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-artifacts .artifact-a,
+  .hero-artifacts .artifact-b {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ── Pillar SVG animations ──────────────────────────────── */
+@keyframes pillar-pulse {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%       { transform: scale(1.3); opacity: 0.7; }
+}
+@keyframes pillar-ring {
+  0%        { transform: scale(0.6); opacity: 0.5; }
+  100%      { transform: scale(1.8); opacity: 0;   }
+}
+@keyframes pillar-bar {
+  0%, 100% { transform: scaleY(1);    opacity: 0.7; }
+  50%      { transform: scaleY(0.55); opacity: 1;   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[pillar-pulse_2s_ease-in-out_infinite\],
+  .animate-\[pillar-ring_2s_ease-in-out_infinite\],
+  .animate-\[pillar-bar_2\.4s_ease-in-out_infinite\] {
+    animation: none;
+  }
+}
+
+/* ── Audience card: tilt desativado em reduced-motion ───── */
+@media (prefers-reduced-motion: reduce) {
+  .audience-card { transform: none !important; transition: none !important; }
+}
+
+/* ── Telemetry Marquee ──────────────────────────────────── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation-play-state: paused; }
+}
+
+/* ── Team fade-up ───────────────────────────────────────── */
+@keyframes team-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.team-group:has(.team-card) {
+  container-type: normal;
+}
+
+@supports (animation-timeline: scroll()) {
+  .team-card {
+    animation: team-fade-up 0.5s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 10% entry 40%;
+  }
+  .team-card:nth-child(2) { animation-delay: 0.12s; }
+}
+
+/* Fallback: sem animation-timeline — mostra estático */
+@supports not (animation-timeline: scroll()) {
+  .team-card { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-card { animation: none; opacity: 1; }
+}
+
+/* ── Mobile Sticky CTA: safe area bottom ───────────────── */
+.sticky-cta .pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* ── Barra de Progresso de Rolagem (Scroll Progress) ──── */
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 3.5px;
+  z-index: 100;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:root:not(.dark):not([data-theme="dark"]) .scroll-progress-track,
+html[data-theme="light"] .scroll-progress-track,
+body[data-theme="light"] .scroll-progress-track {
+  background: rgba(15, 23, 42, 0.12);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-progress-fill {
+  height: 100%;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #2563EB 0%, #3B82F6 30%, #00F0FF 70%, #CCFF00 100%);
+  box-shadow: 0 0 12px rgba(204, 255, 0, 0.9), 0 0 4px rgba(0, 240, 255, 0.8);
+}
+
+@keyframes grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress-fill {
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+/* ── Tipografia Editorial RKT (Prose) ───────────────────── */
+.rkt-prose h2 {
+  color: rgb(var(--telemetry-text-primary));
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.rkt-prose h3 {
+  color: rgb(var(--telemetry-text-primary));
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.rkt-prose h4, .rkt-prose h5 {
+  color: rgb(var(--telemetry-text-primary));
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.rkt-prose p {
+  margin-bottom: 1rem;
+}
+.rkt-prose blockquote {
+  border-left: 3px solid rgb(var(--telemetry-volt));
+  background: rgba(var(--telemetry-volt), 0.05);
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.rkt-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  display: block;
+}
+.rkt-prose th {
+  background: rgba(var(--telemetry-elevated), 0.7);
+  color: rgb(var(--telemetry-text-primary));
+  font-weight: 600;
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid rgba(var(--telemetry-border), 0.12);
+}
+.rkt-prose td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(var(--telemetry-border), 0.08);
+}
+.rkt-prose tr:nth-child(even) {
+  background: rgba(var(--telemetry-card), 0.4);
+}
+.rkt-prose ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+.rkt-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+.rkt-prose li {
+  margin-bottom: 0.35rem;
+}
+.rkt-prose strong {
+  color: rgb(var(--telemetry-text-primary));
+  font-weight: 600;
+}
+.rkt-prose code {
+  font-family: monospace;
+  font-size: 0.85em;
+  background: rgba(var(--telemetry-elevated), 0.6);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  color: rgb(var(--telemetry-volt));
+}
+.rkt-prose hr {
+  border: 0;
+  border-top: 1px solid rgba(var(--telemetry-border), 0.1);
+  margin: 2rem 0;
+}
+
+@keyframes tennisBallFall {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.3) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(calc(var(--side) * 0.4), calc(var(--fall) * 0.25), 0) scale(1.15) rotate(calc(var(--rot) * 0.3));
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--side), var(--fall), 0) scale(0.55) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+.tennis-ball-rain {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  will-change: transform, opacity;
+  animation-name: tennisBallFall;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+

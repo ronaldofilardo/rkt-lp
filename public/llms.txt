@@ -1,0 +1,60 @@
+# RKT Tennis
+
+> Plataforma PWA brasileira para anotar partidas de tênis ponto a ponto e gerar telemetria e análise tática (saque, devolução, pontos de pressão e matriz de golpes) para atletas, treinadores, gestores de CT e espectadores. O registro funciona offline na quadra e sincroniza ao reconectar. Idioma: português do Brasil (pt-BR).
+
+Observação: os números exibidos na landing page são uma demonstração com dados simulados, não estatísticas reais de usuários.
+
+## Páginas
+
+- [Landing page](https://rkt-app.com/): visão geral do produto, pilares, como funciona, perfis de usuário, demonstração de telemetria e FAQ.
+- [Criar conta](https://sistema.rkt-app.com/signup): cadastro no sistema (atleta, treinador, gestor de CT ou espectador).
+- [Entrar](https://sistema.rkt-app.com/login): acesso de usuários já cadastrados.
+- [Termos de Uso](https://sistema.rkt-app.com/termos)
+- [Política de Privacidade](https://sistema.rkt-app.com/privacidade)
+
+## Conteúdo
+
+- [Guia: estatísticas de tênis que o treinador deve acompanhar](https://rkt-app.com/guia/estatisticas-de-tenis): primeiro saque, break points, devolução, winners e erros, rally, rede e momentum.
+- [Glossário de estatísticas de tênis](https://rkt-app.com/glossario): definições de telemetria, ponto de pressão, break point salvo, matriz de golpes, momentum e PWA offline.
+- [Sobre o RKT Tennis](https://rkt-app.com/sobre): quem desenvolve (Omni Sistemas, Curitiba/PR), fundadores e privacidade.
+- [Ronaldo Filardo, fundador e arquiteto](https://rkt-app.com/sobre/equipe): arquiteto de software desde 1996, autor acadêmico e criador da metodologia STE-DEV.
+- [Para atletas](https://rkt-app.com/para-atletas)
+- [Para treinadores](https://rkt-app.com/para-treinadores)
+- [Para gestores de CT](https://rkt-app.com/para-gestores)
+- [Artigos e análises técnicas](https://rkt-app.com/artigos): guias profundos de pontuação, formatos ITF, regras No-Ad/Match Tiebreak e telemetria sob pressão.
+- [Base de conhecimento](https://rkt-app.com/conhecimento): documentação técnica dos 8 módulos de arquitetura e regras de negócio do RKT.
+- [Versão completa deste resumo em texto único](https://rkt-app.com/llms-full.txt)
+
+## O que o RKT faz
+
+- Anotar: registro de cada ponto em tempo real direto no navegador, sem papel e com funcionamento offline.
+- Acompanhar: partidas públicas poderão ser seguidas por familiares e amigos (recurso em breve); a publicação é controlada pelo clube ou treinador.
+- Analisar: telemetria de saque, devolução, pontos de pressão e matriz de golpes disponível logo após o encerramento da partida.
+
+## Para quem
+
+- Atleta: telemetria de saque set a set, aproveitamento e break points salvos.
+- Treinador: matriz de golpes, pontos de pressão e sequências de cada atleta vinculado.
+- Gestor de CT: vínculos, aprovações e histórico de partidas do centro de treinamento.
+- Famílias e acompanhantes: acompanhamento de partidas públicas quando o recurso for liberado.
+
+## Perguntas frequentes
+
+- O que é telemetria esportiva no tênis?
+- Como funciona o registro offline na quadra?
+- Como o RKT protege dados de atletas menores de idade?
+- Como funciona o modelo de acesso à plataforma RKT?
+- Preciso instalar um aplicativo para usar o RKT?
+- Como levar o RKT para o meu clube ou treinador?
+
+Respostas completas na seção de FAQ da landing page: https://rkt-app.com/#faq
+
+## Entidade e contato
+
+- Desenvolvido pela Omni Sistemas (razão social BE SMART LTDA), Curitiba/PR, no mercado de software desde 1996.
+- Fundadores: Ronaldo Domingues Filardo (engenharia; arquiteto de software, autor de "Metodologia de Pesquisa Científica", Editora Intersaberes) e Eduardo Figueiredo (produto).
+- Suporte oficial: suporte@omni-sistemas.com
+
+## Privacidade e conformidade
+
+Atletas menores de idade só são cadastrados com consentimento explícito do responsável legal; as partidas de menores são privadas por padrão. O sistema segue a LGPD e as diretrizes do ECA Digital.

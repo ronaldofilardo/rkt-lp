@@ -1,0 +1,10 @@
+/* EQUIPE */
+Fundador & Engenharia: Ronaldo Domingues Filardo
+Fundador & Produto: Eduardo Figueiredo
+Empresa: Omni Sistemas · Be Smart (BE SMART LTDA)
+Contato: suporte@omni-sistemas.com
+Local: Curitiba, PR, Brasil
+
+/* SITE */
+Idioma: pt-BR
+Stack: Next.js, React, Tailwind CSS, TypeScript
