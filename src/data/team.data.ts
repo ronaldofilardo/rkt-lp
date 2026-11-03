@@ -1,10 +1,12 @@
 import { RONALDO_LEAD } from './content/ronaldo.data';
+import { FOUNDER_RONALDO, FOUNDER_EDUARDO } from '@/config/entity.config';
 
 export interface TeamMember {
   readonly id: string;
   readonly name: string;
   readonly role: string;
   readonly initials: string;
+  readonly slug: string;
   readonly bio?: string;
 }
 
@@ -14,6 +16,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
     name: 'Ronaldo Filardo',
     role: 'Fundador & Engenharia',
     initials: 'RF',
+    slug: FOUNDER_RONALDO.slug,
     bio: RONALDO_LEAD,
   },
   {
@@ -21,6 +24,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
     name: 'Eduardo Figueiredo',
     role: 'Fundador & Produto',
     initials: 'EF',
+    slug: FOUNDER_EDUARDO.slug,
   },
 ] as const;
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { ContentShell } from '@/components/content/ContentShell';
 import { JsonLd } from '@/components/content/JsonLd';
 import { RONALDO_PAGE } from '@/data/content/ronaldo.data';
@@ -27,13 +28,15 @@ export default function EquipePage() {
 
         <div className="mt-8 grid gap-8 sm:grid-cols-2">
           {TEAM_MEMBERS.map((member) => (
-            <div key={member.id} className="rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-6">
-              <h2 className="text-lg font-bold text-telemetry-text-primary">{member.name}</h2>
-              <p className="mt-1 text-xs font-mono text-telemetry-volt">{member.role}</p>
-              <p className="mt-3 text-sm leading-relaxed text-telemetry-text-muted">
-                {member.bio}
-              </p>
-            </div>
+            <Link key={member.id} href={`/sobre/equipe/${member.slug}`}>
+              <div className="rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-6">
+                <h2 className="text-lg font-bold text-telemetry-text-primary">{member.name}</h2>
+                <p className="mt-1 text-xs font-mono text-telemetry-volt">{member.role}</p>
+                <p className="mt-3 text-sm leading-relaxed text-telemetry-text-muted">
+                  {member.bio ?? 'Biografia em breve.'}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       </article>
