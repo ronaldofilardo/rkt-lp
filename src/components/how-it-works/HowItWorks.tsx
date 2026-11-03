@@ -11,7 +11,7 @@ export function HowItWorks() {
       className="border-b border-telemetry-border/10 bg-telemetry-base px-3 py-12 sm:px-4 md:py-16 lg:px-6 lg:py-24"
     >
       <div className="mx-auto max-w-container space-y-10">
-        <header className="space-y-2">
+        <header className="reveal space-y-2">
           <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt">
             Registrar, processar, evoluir
           </p>
@@ -23,7 +23,6 @@ export function HowItWorks() {
           </p>
         </header>
 
-        {/* Linha de progresso desktop (posição absoluta dentro do wrapper) */}
         <div className="relative">
           <ProgressLine stepCount={HOW_IT_WORKS_STEPS.length} />
 
@@ -33,6 +32,7 @@ export function HowItWorks() {
                 key={step.id}
                 step={step}
                 isLast={i === HOW_IT_WORKS_STEPS.length - 1}
+                index={i}
               />
             ))}
           </ol>

@@ -47,6 +47,10 @@ const config: Config = {
         body: ['Haas', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         mono: ['ui-monospace', 'SF Mono', 'Cascadia Code', 'Segoe UI Mono', 'monospace'],
       },
+      fontSize: {
+        'xs-extra': ['10px', { lineHeight: '1.2' }],
+        'sm-extra': ['11px', { lineHeight: '1.3' }],
+      },
       borderRadius: {
         'radius-sm': '12px',
         'radius-md': '16px',

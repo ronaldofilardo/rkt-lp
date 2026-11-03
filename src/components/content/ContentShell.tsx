@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 import type { ReactNode } from 'react';
 import { buildSignupUrl } from '@/config/site.config';
 import { BrandLogo } from '@/components/telemetry-ui/BrandLogo';

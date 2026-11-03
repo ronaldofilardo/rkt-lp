@@ -3,18 +3,29 @@ import type { Step } from '@/data/how-it-works.data';
 interface Props {
   step: Step;
   isLast: boolean;
+  index: number;
 }
 
-export function StepItem({ step, isLast }: Props) {
+const CIRCLE_CLASS: Record<number, string> = {
+  0: 'step-circle',
+  1: 'step-circle-delay-1',
+  2: 'step-circle-delay-2',
+};
+
+export function StepItem({ step, isLast, index }: Props) {
+  const circleClass = CIRCLE_CLASS[index] ?? 'step-circle';
+
   return (
     <li className="relative flex gap-4 md:flex-col md:gap-0">
       {/* Indicador + linha conectora */}
       <div className="flex flex-col items-center md:flex-row md:items-start">
-        {/* Círculo numerado */}
-        <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-telemetry-volt bg-telemetry-base font-mono text-sm font-bold text-telemetry-volt">
+        {/* Círculo numerado — acende ao entrar na viewport */}
+        <div
+          className={`${circleClass} relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-telemetry-volt bg-telemetry-base font-mono text-sm font-bold text-telemetry-volt`}
+        >
           {step.number}
         </div>
-        {/* Linha conectora: vertical no mobile, horizontal no desktop */}
+        {/* Linha conectora */}
         {!isLast && (
           <div className="step-line ml-[19px] mt-0 h-full w-px bg-telemetry-border/10 md:ml-0 md:mt-[19px] md:h-px md:w-full md:flex-1" />
         )}

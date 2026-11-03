@@ -2,6 +2,7 @@ import { buildSignupUrl } from '@/config/site.config';
 import { MOCK_MATCH_DATA } from '@/data/mock-match.data';
 import { CourtLines } from './CourtLines';
 import { HeroArtifacts } from './HeroArtifacts';
+import { Heading, Text } from '@/design-system/typography';
 
 export function Hero() {
   const signupHero = buildSignupUrl({ origem: 'lp_hero' });
@@ -22,16 +23,16 @@ export function Hero() {
             <span className="rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Evolução por dados</span>
           </div>
 
-          <h1 className="font-display text-4xl font-extrabold leading-tight tracking-tight text-telemetry-text-primary sm:text-5xl lg:text-6xl">
+          <Heading as="h1" variant="h1" color="primary" className="tracking-tight sm:text-5xl lg:text-6xl">
             Você vive o jogo. O{' '}
             <span className="text-telemetry-volt">RKT</span> transforma cada{' '}
             <span className="text-telemetry-volt">anotação</span> em evolução.
-          </h1>
+          </Heading>
 
-          <p className="max-w-md text-base leading-relaxed text-telemetry-text-muted sm:text-lg">
+          <Text variant="body" color="muted" as="p" className="max-w-md">
             Substitua a impressão subjetiva do pós-jogo por dados táticos claros de rali, pontos de
             quebra e aproveitamento de saque — para atletas, treinadores e clubes de tênis.
-          </p>
+          </Text>
 
           <div className="flex flex-wrap items-center gap-3">
             <a

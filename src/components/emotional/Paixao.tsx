@@ -1,7 +1,6 @@
 /**
  * Bloco emocional (#paixao): vivência autêntica de quadra — calor, torcida,
  * tensão do match tiebreak — conectada à tranquilidade de ter o registro seguro.
- * Sem prova social simulada: o valor vem da experiência real do público-alvo.
  */
 export function Paixao() {
   return (
@@ -11,7 +10,7 @@ export function Paixao() {
       className="border-b border-telemetry-border/10 bg-telemetry-base px-3 py-12 sm:px-4 md:py-16 lg:px-6 lg:py-24"
     >
       <div className="mx-auto max-w-container">
-        <div className="mx-auto max-w-3xl space-y-4 text-center">
+        <div className="reveal mx-auto max-w-3xl space-y-4 text-center">
           <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt">
             A paixão de acompanhar o jogo
           </p>

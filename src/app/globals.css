@@ -101,8 +101,7 @@ body {
   }
 }
 
-
-/* Header fixo: âncoras não ficam escondidas (mobile tem 2ª linha de menu) */
+/* Header fixo: âncoras não ficam escondidas */
 html {
   scroll-padding-top: 6.5rem;
 }
@@ -113,24 +112,78 @@ html {
   }
 }
 
-/* ── Hero Artifacts: fade-in e flutuação ───────────────── */
+/* ══════════════════════════════════════════════════════════
+   SCROLL-REVEAL UNIVERSAL
+   Todas as seções entram em cena ao scrollar.
+   Fallback estático para browsers sem animation-timeline.
+═══════════════════════════════════════════════════════════ */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@supports (animation-timeline: scroll()) {
+  .reveal {
+    animation: reveal-up 0.6s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  .reveal-delay-1 { animation-delay: 0.08s; }
+  .reveal-delay-2 { animation-delay: 0.16s; }
+  .reveal-delay-3 { animation-delay: 0.24s; }
+}
+
+@supports not (animation-timeline: scroll()) {
+  .reveal,
+  .reveal-delay-1,
+  .reveal-delay-2,
+  .reveal-delay-3 { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-delay-1,
+  .reveal-delay-2,
+  .reveal-delay-3 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   HERO ARTIFACTS — entrada mais dramática
+═══════════════════════════════════════════════════════════ */
 .hero-artifacts .artifact-a,
 .hero-artifacts .artifact-b {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(32px) scale(0.94);
+  will-change: transform, opacity;
 }
 
-.hero-artifacts.hero-visible .artifact-a { opacity: 1; transform: translateY(0); }
-.hero-artifacts.hero-visible .artifact-b { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
-
+@keyframes hero-enter-a {
+  from { opacity: 0; transform: translateY(32px) scale(0.94); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0);   }
+}
+@keyframes hero-enter-b {
+  from { opacity: 0; transform: translateY(24px) scale(0.96) rotate(-2deg); filter: blur(3px); }
+  to   { opacity: 1; transform: translateY(6px)  scale(1)    rotate(0deg);  filter: blur(0);   }
+}
 @keyframes hero-float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-6px); }
 }
 
-.hero-artifacts.hero-visible .artifact-a { animation: hero-float 5s ease-in-out 0.6s infinite; }
-.hero-artifacts.hero-visible .artifact-b { animation: hero-float 6s ease-in-out 1.2s infinite; }
+.hero-artifacts.hero-visible .artifact-a {
+  animation:
+    hero-enter-a 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    hero-float   5s ease-in-out 0.7s infinite;
+}
+.hero-artifacts.hero-visible .artifact-b {
+  animation:
+    hero-enter-b 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards,
+    hero-float   6s ease-in-out 1.2s infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-artifacts .artifact-a,
@@ -138,11 +191,213 @@ html {
     opacity: 1;
     transform: none;
     animation: none;
+    filter: none;
     transition: none;
   }
 }
 
-/* ── Pillar SVG animations ──────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   COURT LINES — draw-on + ball bounce + breathe
+═══════════════════════════════════════════════════════════ */
+
+/* Respiro geral do SVG */
+@keyframes court-breathe {
+  0%, 100% { opacity: 0.085; }
+  50%       { opacity: 0.14;  }
+}
+.court-lines-svg {
+  animation: court-breathe 9s ease-in-out infinite;
+}
+
+/* Wrapper 3D perspectiva */
+.court-3d-wrapper {
+  perspective: 700px;
+  perspective-origin: 50% 20%;
+}
+.court-3d-inner {
+  transform: rotateX(48deg) rotateZ(-6deg) scale(0.9);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+/*
+  Draw-on: cada linha começa com stroke-dashoffset igual ao seu comprimento
+  e anima até 0. Cada segmento tem um delay escalonado para efeito sequencial.
+  Os valores de stroke-dasharray/dashoffset são definidos inline no SVG.
+*/
+@keyframes line-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Classe aplicada em cada <line>/<rect> que deve se desenhar */
+.court-draw {
+  animation: line-draw 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-play-state: paused; /* ativado pelo .court-lines-svg quando visível */
+}
+.court-lines-svg .court-draw {
+  animation-play-state: running;
+}
+
+/* Bolinha percorrendo a diagonal da quadra */
+@keyframes ball-trace {
+  0%   { offset-distance: 0%;   opacity: 0;   r: 5; }
+  5%   { opacity: 1; }
+  45%  { offset-distance: 50%;  opacity: 1;   r: 6; }
+  50%  { offset-distance: 50%;  opacity: 0.3; r: 4; } /* quique — diminui */
+  55%  { r: 6; opacity: 1; }
+  95%  { offset-distance: 100%; opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0;   r: 5; }
+}
+
+.court-ball {
+  offset-rotate: 0deg;
+  animation: ball-trace 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.4s infinite;
+}
+
+/* Glow da bolinha */
+@keyframes ball-glow-pulse {
+  0%, 100% { opacity: 0.25; r: 12; }
+  50%       { opacity: 0.5;  r: 16; }
+}
+.court-ball-glow {
+  animation: ball-glow-pulse 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.4s infinite;
+}
+
+/* Rastro da bolinha — fade rápido */
+@keyframes ball-trail {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  5%   { opacity: 0.4; }
+  90%  { offset-distance: 88%;  opacity: 0.2; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+.court-ball-trail {
+  offset-rotate: 0deg;
+  animation: ball-trail 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.35s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .court-lines-svg   { animation: none; opacity: 0.07; }
+  .court-3d-inner    { transform: none; }
+  .court-draw        { animation: none; stroke-dashoffset: 0 !important; }
+  .court-ball,
+  .court-ball-glow,
+  .court-ball-trail  { animation: none; opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   PILLAR CARD — fundo animado (SVG absoluto dentro do article)
+═══════════════════════════════════════════════════════════ */
+
+/* Card precisa de position:relative para o SVG de fundo */
+.pillar-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* SVG de fundo: cobre todo o card, pointer-events none */
+.pillar-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Card 01 ANOTAR — trajetória de rali (linhas em V) ── */
+@keyframes pc-rally-line {
+  0%   { stroke-dashoffset: 300; opacity: 0; }
+  15%  { opacity: 1; }
+  80%  { stroke-dashoffset: 0;   opacity: 1; }
+  100% { stroke-dashoffset: 0;   opacity: 0; }
+}
+@keyframes pc-impact-ring {
+  0%   { r: 0;  opacity: 0.9; }
+  100% { r: 22; opacity: 0;   }
+}
+@keyframes pc-impact-dot {
+  0%,60%  { r: 0; opacity: 0; }
+  70%     { r: 5; opacity: 1; }
+  100%    { r: 3; opacity: 0.6; }
+}
+
+.pc-rally-a {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: pc-rally-line 2.8s ease-in-out 0.2s infinite;
+}
+.pc-rally-b {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: pc-rally-line 2.8s ease-in-out 1.6s infinite;
+}
+.pc-ring-a {
+  animation: pc-impact-ring 0.7s ease-out 2.6s infinite;
+}
+.pc-dot-a {
+  animation: pc-impact-dot 2.8s ease-out 0.2s infinite;
+}
+
+/* ── Card 02 ACOMPANHAR — ondas de sinal (ripple) ──────── */
+@keyframes pc-ripple {
+  0%   { r: 4;  opacity: 0.7; stroke-width: 1.5; }
+  100% { r: 40; opacity: 0;   stroke-width: 0.5; }
+}
+@keyframes pc-dot-pulse {
+  0%, 100% { r: 4; opacity: 1;   }
+  50%      { r: 6; opacity: 0.6; }
+}
+
+.pc-ripple-1 { animation: pc-ripple 3s ease-out 0s   infinite; }
+.pc-ripple-2 { animation: pc-ripple 3s ease-out 1s   infinite; }
+.pc-ripple-3 { animation: pc-ripple 3s ease-out 2s   infinite; }
+.pc-center-dot { animation: pc-dot-pulse 2s ease-in-out infinite; }
+
+/* ── Card 03 ANALISAR — linha de dados correndo ─────────── */
+@keyframes pc-data-run {
+  0%   { stroke-dashoffset: 220; opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { stroke-dashoffset: 0;   opacity: 0.9; }
+  100% { stroke-dashoffset: 0;   opacity: 0;   }
+}
+@keyframes pc-bar-grow {
+  0%, 100% { transform: scaleY(0.2); opacity: 0.2; }
+  50%      { transform: scaleY(1);   opacity: 0.6; }
+}
+@keyframes pc-spark {
+  0%        { opacity: 0; transform: translate(0,0) scale(0); }
+  30%, 70%  { opacity: 1; transform: translate(var(--sx), var(--sy)) scale(1); }
+  100%      { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(0); }
+}
+
+.pc-data-line {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: pc-data-run 2.2s ease-in-out infinite;
+}
+.pc-data-line-2 {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: pc-data-run 2.2s ease-in-out 0.9s infinite;
+}
+.pc-bar-1 { transform-origin: 30px 70px; animation: pc-bar-grow 2s ease-in-out 0s   infinite; }
+.pc-bar-2 { transform-origin: 50px 70px; animation: pc-bar-grow 2s ease-in-out 0.3s infinite; }
+.pc-bar-3 { transform-origin: 70px 70px; animation: pc-bar-grow 2s ease-in-out 0.6s infinite; }
+.pc-bar-4 { transform-origin: 90px 70px; animation: pc-bar-grow 2s ease-in-out 0.9s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-rally-a, .pc-rally-b, .pc-ring-a, .pc-dot-a,
+  .pc-ripple-1, .pc-ripple-2, .pc-ripple-3, .pc-center-dot,
+  .pc-data-line, .pc-data-line-2,
+  .pc-bar-1, .pc-bar-2, .pc-bar-3, .pc-bar-4 {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   PILLAR SVG ANIMATIONS
+═══════════════════════════════════════════════════════════ */
 @keyframes pillar-pulse {
   0%, 100% { transform: scale(1);   opacity: 1;   }
   50%       { transform: scale(1.3); opacity: 0.7; }
@@ -164,12 +419,55 @@ html {
   }
 }
 
-/* ── Audience card: tilt desativado em reduced-motion ───── */
+/* ══════════════════════════════════════════════════════════
+   STEP CIRCLES — acendem ao entrar na viewport
+═══════════════════════════════════════════════════════════ */
+@keyframes step-glow {
+  0%   { box-shadow: 0 0 0 0   rgba(204,255,0,0.7); transform: scale(0.6); opacity: 0; }
+  60%  { box-shadow: 0 0 0 10px rgba(204,255,0,0);  transform: scale(1.1); opacity: 1; }
+  100% { box-shadow: 0 0 0 0   rgba(204,255,0,0);   transform: scale(1);   opacity: 1; }
+}
+
+@supports (animation-timeline: scroll()) {
+  .step-circle {
+    animation: step-glow 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-timeline: view();
+    animation-range: entry 5% entry 35%;
+  }
+  .step-circle-delay-1 {
+    animation: step-glow 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+    animation-timeline: view();
+    animation-range: entry 5% entry 35%;
+  }
+  .step-circle-delay-2 {
+    animation: step-glow 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.24s forwards;
+    animation-timeline: view();
+    animation-range: entry 5% entry 35%;
+  }
+}
+
+@supports not (animation-timeline: scroll()) {
+  .step-circle,
+  .step-circle-delay-1,
+  .step-circle-delay-2 { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-circle,
+  .step-circle-delay-1,
+  .step-circle-delay-2 { animation: none !important; opacity: 1 !important; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   AUDIENCE CARD — tilt 3D no hover (desktop)
+═══════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   .audience-card { transform: none !important; transition: none !important; }
 }
 
-/* ── Telemetry Marquee ──────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   TELEMETRY MARQUEE
+═══════════════════════════════════════════════════════════ */
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -183,7 +481,45 @@ html {
   .marquee-track { animation-play-state: paused; }
 }
 
-/* ── Team fade-up ───────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   FINAL CTA — gradiente animado + pulse ring no botão
+═══════════════════════════════════════════════════════════ */
+@keyframes cta-gradient {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+.final-cta-bg {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--telemetry-surface)) 0%,
+    rgb(var(--telemetry-active))  40%,
+    rgba(var(--telemetry-blue),  0.18) 70%,
+    rgba(var(--telemetry-volt),  0.07) 100%
+  );
+  background-size: 300% 300%;
+  animation: cta-gradient 9s ease infinite;
+}
+
+@keyframes btn-pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(37,99,235,0.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0   rgba(37,99,235,0); }
+}
+
+.btn-cta-primary {
+  animation: btn-pulse-ring 2.8s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .final-cta-bg  { animation: none; }
+  .btn-cta-primary { animation: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   TEAM FADE-UP (scroll-driven)
+═══════════════════════════════════════════════════════════ */
 @keyframes team-fade-up {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0);    }
@@ -202,7 +538,6 @@ html {
   .team-card:nth-child(2) { animation-delay: 0.12s; }
 }
 
-/* Fallback: sem animation-timeline — mostra estático */
 @supports not (animation-timeline: scroll()) {
   .team-card { opacity: 1; }
 }
@@ -211,12 +546,16 @@ html {
   .team-card { animation: none; opacity: 1; }
 }
 
-/* ── Mobile Sticky CTA: safe area bottom ───────────────── */
+/* ══════════════════════════════════════════════════════════
+   MOBILE STICKY CTA — safe area
+═══════════════════════════════════════════════════════════ */
 .sticky-cta .pb-safe {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
-/* ── Barra de Progresso de Rolagem (Scroll Progress) ──── */
+/* ══════════════════════════════════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════════════════════════════════ */
 .scroll-progress-track {
   position: fixed;
   top: 0;
@@ -250,7 +589,7 @@ body[data-theme="light"] .scroll-progress-track {
 
 @keyframes grow-x {
   from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  to   { transform: scaleX(1); }
 }
 
 @supports (animation-timeline: scroll()) {
@@ -260,7 +599,39 @@ body[data-theme="light"] .scroll-progress-track {
   }
 }
 
-/* ── Tipografia Editorial RKT (Prose) ───────────────────── */
+/* ══════════════════════════════════════════════════════════
+   TENNIS BALL RAIN
+═══════════════════════════════════════════════════════════ */
+@keyframes tennisBallFall {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.3) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(calc(var(--side) * 0.4), calc(var(--fall) * 0.25), 0) scale(1.15) rotate(calc(var(--rot) * 0.3));
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--side), var(--fall), 0) scale(0.55) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+.tennis-ball-rain {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  will-change: transform, opacity;
+  animation-name: tennisBallFall;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  filter: drop-shadow(0 4px 10px rgba(204,255,0,0.35));
+}
+
+/* ══════════════════════════════════════════════════════════
+   TIPOGRAFIA EDITORIAL RKT (Prose)
+═══════════════════════════════════════════════════════════ */
 .rkt-prose h2 {
   color: rgb(var(--telemetry-text-primary));
   font-size: 1.35rem;
@@ -282,9 +653,7 @@ body[data-theme="light"] .scroll-progress-track {
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
 }
-.rkt-prose p {
-  margin-bottom: 1rem;
-}
+.rkt-prose p  { margin-bottom: 1rem; }
 .rkt-prose blockquote {
   border-left: 3px solid rgb(var(--telemetry-volt));
   background: rgba(var(--telemetry-volt), 0.05);
@@ -312,9 +681,7 @@ body[data-theme="light"] .scroll-progress-track {
   padding: 0.5rem 0.75rem;
   border: 1px solid rgba(var(--telemetry-border), 0.08);
 }
-.rkt-prose tr:nth-child(even) {
-  background: rgba(var(--telemetry-card), 0.4);
-}
+.rkt-prose tr:nth-child(even) { background: rgba(var(--telemetry-card), 0.4); }
 .rkt-prose ul {
   list-style-type: disc;
   padding-left: 1.25rem;
@@ -325,9 +692,7 @@ body[data-theme="light"] .scroll-progress-track {
   padding-left: 1.25rem;
   margin-bottom: 1rem;
 }
-.rkt-prose li {
-  margin-bottom: 0.35rem;
-}
+.rkt-prose li    { margin-bottom: 0.35rem; }
 .rkt-prose strong {
   color: rgb(var(--telemetry-text-primary));
   font-weight: 600;
@@ -345,31 +710,3 @@ body[data-theme="light"] .scroll-progress-track {
   border-top: 1px solid rgba(var(--telemetry-border), 0.1);
   margin: 2rem 0;
 }
-
-@keyframes tennisBallFall {
-  0% {
-    transform: translate3d(0, 0, 0) scale(0.3) rotate(0deg);
-    opacity: 1;
-  }
-  25% {
-    transform: translate3d(calc(var(--side) * 0.4), calc(var(--fall) * 0.25), 0) scale(1.15) rotate(calc(var(--rot) * 0.3));
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(var(--side), var(--fall), 0) scale(0.55) rotate(var(--rot));
-    opacity: 0;
-  }
-}
-
-.tennis-ball-rain {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  user-select: none;
-  will-change: transform, opacity;
-  animation-name: tennisBallFall;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-
-

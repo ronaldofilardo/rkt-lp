@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRef } from 'react';
 import type { AudienceCard as AudienceCardType } from '@/data/audience.data';
 
@@ -37,14 +38,14 @@ export function AudienceCard({ card, signupUrl }: Props) {
       className="audience-card flex h-full flex-col gap-4 rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-5 transition-transform duration-150 ease-out will-change-transform sm:p-6"
       aria-label={`Perfil: ${card.title}`}
     >
-      <p className="font-mono text-[10px] uppercase tracking-widest text-telemetry-volt">
+      <p className="font-mono text-xs-extra uppercase tracking-widest text-telemetry-volt">
         {card.path ? (
-          <a
+          <Link
             href={card.path}
             className="underline-offset-2 transition-colors hover:text-telemetry-text-primary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-telemetry-blue"
           >
             {card.title}
-          </a>
+          </Link>
         ) : (
           card.title
         )}

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { QaItem } from '@/data/content/page.types';
 import { LinkedText } from './LinkedText';
+import { Heading, Text } from '@/design-system/typography';
 
 interface Props {
   eyebrow: string;
@@ -13,11 +14,15 @@ export function ContentArticle({ eyebrow, title, lead, children }: Props) {
   return (
     <article className="mx-auto max-w-3xl space-y-10 px-3 py-12 sm:px-4 md:py-16 lg:px-6">
       <header className="space-y-3">
-        <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt">{eyebrow}</p>
-        <h1 className="font-display text-3xl font-extrabold leading-tight text-telemetry-text-primary sm:text-4xl">
+        <Text variant="body-small" color="volt" as="p" className="font-mono uppercase tracking-widest">
+          {eyebrow}
+        </Text>
+        <Heading as="h1" variant="h1" color="primary">
           {title}
-        </h1>
-        <p className="text-base leading-relaxed text-telemetry-text-muted sm:text-lg">{lead}</p>
+        </Heading>
+        <Text variant="body" color="muted" as="p">
+          {lead}
+        </Text>
       </header>
       {children}
     </article>
@@ -36,12 +41,18 @@ export function QaSections({
     <>
       {items.map((item) => (
         <section key={item.id} id={item.id} aria-labelledby={`${item.id}-title`} className="space-y-2">
-          <h2 id={`${item.id}-title`} className="text-xl font-bold text-telemetry-text-primary sm:text-2xl">
+          <Heading
+            as="h2"
+            variant="h2"
+            color="primary"
+            id={`${item.id}-title`}
+            className="text-xl font-bold sm:text-2xl"
+          >
             {item.question}
-          </h2>
-          <p className="text-sm leading-relaxed text-telemetry-text-muted sm:text-base">
+          </Heading>
+          <Text variant="body-small" color="muted" as="p">
             {glossaryLinks ? <LinkedText text={item.answer} /> : item.answer}
-          </p>
+          </Text>
         </section>
       ))}
     </>

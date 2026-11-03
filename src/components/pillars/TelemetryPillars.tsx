@@ -20,7 +20,7 @@ export function TelemetryPillars() {
       className="border-b border-telemetry-border/10 bg-telemetry-surface px-3 py-12 sm:px-4 md:py-16 lg:px-6 lg:py-24"
     >
       <div className="mx-auto max-w-container space-y-10">
-        <header className="space-y-2">
+        <header className="reveal space-y-2">
           <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt">
             Três pilares, uma partida completa
           </p>
@@ -34,8 +34,11 @@ export function TelemetryPillars() {
 
         {/* Grid → carrossel snap no mobile */}
         <div className="-mx-3 flex snap-x snap-mandatory gap-4 overflow-x-auto px-3 pb-2 [scrollbar-width:none] sm:-mx-4 sm:px-4 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:p-0 [&::-webkit-scrollbar]:hidden">
-          {PILLARS.map((pillar) => (
-            <div key={pillar.id} className="w-[80vw] shrink-0 snap-start sm:w-72 md:w-auto">
+          {PILLARS.map((pillar, i) => (
+            <div
+              key={pillar.id}
+              className={`reveal reveal-delay-${i} w-[80vw] shrink-0 snap-start sm:w-72 md:w-auto`}
+            >
               <PillarCard
                 pillar={pillar}
                 icon={ICONS[pillar.id]}

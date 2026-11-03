@@ -37,7 +37,7 @@ export default function HomePage() {
       </main>
       <Footer />
       <MobileStickyCTA />
-      <TennisBallRain targetIds={['paixao', 'conhecimento-artigos']} />
+      <TennisBallRain targetIds={['hero', 'paixao', 'conhecimento-artigos', 'comecar']} />
     </>
   );
 }
