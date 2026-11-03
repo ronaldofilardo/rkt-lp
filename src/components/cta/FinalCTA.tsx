@@ -40,6 +40,10 @@ export function FinalCTA() {
           </a>
         </div>
 
+        <p className="mt-4 font-mono text-xs text-telemetry-volt">
+          Cota inicial de 5 partidas sem custos para experimentar · Políticas e planos comerciais em definição
+        </p>
+
         <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-telemetry-text-muted">
           {SITE_CONFIG.tagline}
         </p>

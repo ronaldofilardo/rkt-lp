@@ -117,7 +117,11 @@ test('SoftwareApplication: featureList, audience, inLanguage, subcategoria', () 
   assert.equal(s['@type'], 'SoftwareApplication');
   assert.equal(s.inLanguage, 'pt-BR');
   assert.equal(s.applicationSubCategory, 'Sports Analytics');
-  assert.ok(!('offers' in s), 'sem bloco offers prematuro (planos em lançamento)');
+  assert.ok('offers' in s, 'bloco offers reflete a cota de 5 partidas');
+  assert.ok(
+    String((s.offers as any)?.description).includes('5 partidas'),
+    'offers deve descrever a cota de 5 partidas'
+  );
   assert.ok(s.featureList.length >= 5);
   assert.equal(s.audience.length, SEO.audiences.length);
   assert.equal(s.description, SITE_CONFIG.description);

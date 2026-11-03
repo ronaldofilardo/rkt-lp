@@ -43,7 +43,7 @@ Observação: os números exibidos na landing page são uma demonstração com d
 - O que é telemetria esportiva no tênis?
 - Como funciona o registro offline na quadra?
 - Como o RKT protege dados de atletas menores de idade?
-- Como funciona o modelo de acesso à plataforma RKT?
+- Como funciona a cota de uso e o modelo de acesso?
 - Preciso instalar um aplicativo para usar o RKT?
 - Como levar o RKT para o meu clube ou treinador?
 

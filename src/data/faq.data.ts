@@ -25,9 +25,9 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
   },
   {
     id: 'modelo-acesso',
-    question: 'Como funciona o modelo de acesso à plataforma RKT?',
+    question: 'Como funciona a cota de uso e o modelo de acesso?',
     answer:
-      'O RKT está atualmente em fase de demonstração pública e aberta, permitindo explorar recursos e painéis sem necessidade de cartão de crédito. Os modelos de assinatura e planos de acesso para centros de treinamento, equipes e atletas estão sendo definidos para a fase de lançamento comercial.',
+      'Atletas, treinadores particulares e anotadores contam com uma cota de 5 partidas para utilizar o sistema sem custos e avaliar a telemetria na prática, sem precisar de cartão de crédito. As políticas comerciais completas e os planos para centros de treinamento e clubes estão sendo definidos para o lançamento.',
   },
   {
     id: 'uso-web-imediato',

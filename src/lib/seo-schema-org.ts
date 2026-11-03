@@ -25,6 +25,7 @@ export function buildOrganizationSchema() {
     '@type': 'Organization',
     '@id': orgId(),
     name: SITE_CONFIG.name,
+    foundingDate: '2024',
     url,
     logo: `${url}/brand/icon-512.png`,
     image: getOgImageUrl(url),

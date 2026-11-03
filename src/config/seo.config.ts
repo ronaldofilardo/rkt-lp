@@ -1,7 +1,7 @@
 export const SEO = {
   title: 'Análise de Partidas de Tênis e Telemetria Tática | RKT',
   description:
-    'Plataforma PWA de telemetria e análise tática para CTs, treinadores, atletas e famílias. Perfis: atleta, treinador, gestor de CT e espectador. LGPD.',
+    'Plataforma PWA de telemetria e análise tática para CTs, gestores e famílias. Cota de 5 partidas sem custos para atleta, treinador e espectador. LGPD.',
   ogImage: {
     path: '/og-image.png',
     width: 1200,

@@ -74,6 +74,10 @@ export function TargetAudience() {
             </tbody>
           </table>
         </div>
+
+        <p className="font-mono text-xs text-telemetry-text-muted">
+          * Atletas, treinadores particulares e anotadores contam com uma cota de 5 partidas sem custos para experimentar. Políticas e planos para clubes estão em definição.
+        </p>
       </div>
     </section>
   );

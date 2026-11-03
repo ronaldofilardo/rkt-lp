@@ -10,6 +10,8 @@ export const ALLOWED_CRAWLERS = [
   'Bingbot',
   'Amazonbot',
   'Applebot',
+  'meta-externalagent',
+  'Diffbot',
 ] as const;
 
 export const DISALLOWED_PATHS = ['/api/'] as const;

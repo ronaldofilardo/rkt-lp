@@ -21,6 +21,12 @@ export function buildSoftwareApplicationSchema() {
     publisher: { '@id': orgId() },
     featureList: [...SEO.featureList],
     audience: SEO.audiences.map((audienceType) => ({ '@type': 'Audience', audienceType })),
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'BRL',
+      description: 'Cota de 5 partidas sem custos para atletas, treinadores e anotadores. Políticas e planos em definição.',
+    },
   };
 }
 

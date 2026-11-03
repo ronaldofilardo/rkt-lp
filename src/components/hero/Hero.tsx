@@ -42,6 +42,10 @@ export function Hero() {
               Experimentar o RKT
             </a>
           </div>
+
+          <p className="font-mono text-xs text-telemetry-volt">
+            Cota de 5 partidas sem custos para atletas, treinadores e anotadores · Sem necessidade de cartão.
+          </p>
         </div>
 
         {/* Lado direito: artefatos flutuantes */}
