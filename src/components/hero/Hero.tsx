@@ -18,15 +18,15 @@ export function Hero() {
         {/* Lado esquerdo: texto */}
         <div className="flex-1 space-y-6">
           <div className="flex flex-wrap gap-2">
-            <span className="rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Registro de partidas</span>
-            <span className="rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Telemetria tática</span>
-            <span className="rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Evolução por dados</span>
+            <span className="hero-chip hero-chip-1 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Registro de partidas</span>
+            <span className="hero-chip hero-chip-2 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Telemetria tática</span>
+            <span className="hero-chip hero-chip-3 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Evolução por dados</span>
           </div>
 
           <Heading as="h1" variant="h1" color="primary" className="tracking-tight sm:text-5xl lg:text-6xl">
             Você vive o jogo. O{' '}
-            <span className="text-telemetry-volt">RKT</span> transforma cada{' '}
-            <span className="text-telemetry-volt">anotação</span> em evolução.
+            <span className="hero-word-wipe text-telemetry-volt">RKT</span> transforma cada{' '}
+            <span className="hero-word-wipe hero-word-wipe-delay text-telemetry-volt">anotação</span> em evolução.
           </Heading>
 
           <Text variant="body" color="muted" as="p" className="max-w-md">
@@ -37,7 +37,7 @@ export function Hero() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={signupHero}
-              className="rounded-full border border-telemetry-border/20 px-6 py-3 text-sm font-semibold text-telemetry-text-primary transition-colors hover:border-telemetry-border/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-telemetry-blue"
+              className="hero-cta-button rounded-full border border-telemetry-border/20 px-6 py-3 text-sm font-semibold text-telemetry-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-telemetry-blue"
             >
               Experimentar o RKT
             </a>

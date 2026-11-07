@@ -1,5 +1,5 @@
 /* EQUIPE */
-Fundador & Engenharia: Ronaldo Domingues Filardo
+Fundador & Desenvolvimento: Ronaldo Domingues Filardo
 Fundador & Produto: Eduardo Figueiredo
 Empresa: Omni Sistemas · Be Smart (BE SMART LTDA)
 Contato: suporte@omni-sistemas.com

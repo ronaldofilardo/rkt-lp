@@ -11,29 +11,58 @@ export const RONALDO_PAGE: PageMeta = {
 export const RONALDO_LEAD =
   'Arquiteto de software por trás do RKT Tennis. Atua em engenharia de software desde 1996, é autor de livro acadêmico sobre metodologia de pesquisa científica e criador da metodologia STE-DEV, e traz rigor universitário e disciplina de engenharia para a plataforma de telemetria esportiva.';
 
-export const RONALDO_QA: readonly QaItem[] = [
+export interface TimelineEvent {
+  period: string;
+  title: string;
+  description: string;
+  link?: { label: string; url: string };
+}
+
+export const RONALDO_TIMELINE: readonly TimelineEvent[] = [
   {
-    id: 'quem-e-ronaldo-filardo',
-    question: 'Quem é o fundador da Omni Sistemas?',
-    answer:
-      'É o fundador da Omni Sistemas e criador da metodologia STE-DEV. Iniciou em 1996 com o software ANTHROPO em VBA, acumulando 30 anos de arquiteturas em saúde, finanças, esportes e blockchain, unindo rigor acadêmico à tecnologia de ponta.',
+    period: '1996',
+    title: 'Pioneirismo em Composição Corporal',
+    description:
+      'Criação do software ANTHROPO em VBA/Excel, acumulando mais de 50.000 avaliações, mais de 20.000 horas de uso e inúmeras academias adotando para seus respectivos setores de avaliação física.',
   },
   {
-    id: 'o-que-e-ste-dev',
-    question: 'O que é a Metodologia STE-DEV?',
+    period: '2000 – 2020',
+    title: 'Sistemas Corporativos Críticos & Saúde',
+    description:
+      'Arquitetura de sistemas médicos com laudos automatizados, prontuários eletrônicos em conformidade estrita à LGPD, plataformas de comissionamento e algoritmos de ranking esportivo.',
+  },
+  {
+    period: '2021 – 2023',
+    title: 'Segurança Criptográfica & Zero-Trust',
+    description:
+      'Atuação focada em desenvolvimento de produto e testagem na plataforma Better Use Blockchain, estabelecendo estruturas de dados imutáveis e isolamento no nível DB-Row/DTO.',
+  },
+  {
+    period: '2024 – Presente',
+    title: 'Omni Sistemas, STE-DEV & RKT Tennis',
+    description:
+      'Concepção da metodologia STE-DEV (baseada na ASD-STE100) para engenharia preventiva e arquitetura integral da plataforma RKT Tennis na Omni Sistemas.',
+    link: { label: 'Conhecer Projetos Omni', url: 'https://www.omni-sistemas.com/#projetos' },
+  },
+] as const;
+
+export const RONALDO_QA: readonly QaItem[] = [
+  {
+    id: 'papel-rkt',
+    question: 'Qual é o papel de Ronaldo Filardo no RKT Tennis?',
     answer:
-      'Framework de engenharia preventiva baseado na norma aeroespacial ASD-STE100. Elimina dívida técnica na origem com módulos de menos de 100 linhas, vocabulário controlado, Clean Architecture e SOLID, zero-any e auditoria formal para sistemas legados.',
+      'É o arquiteto responsável pela concepção e execução de todo o sistema, desenhando o motor de regras oficiais e o pipeline offline-first sob a metodologia STE-DEV.',
   },
   {
     id: 'base-academica',
-    question: 'Qual a base acadêmica?',
+    question: 'Qual é a base acadêmica e científica?',
     answer:
-      'Professor universitário (graduação e especialização) da Pontifícia Universidade Católica do Paraná, lecionando Metodologia de Pesquisa Científica. Autor do livro “Metodologia de Pesquisa Científica: fundamentos, princípios e processos”, Editora Intersaberes. Pesquisas de doutoramento em Portugal.',
+      'Professor universitário na PUCPR lecionando Metodologia de Pesquisa Científica, autor de livro publicado pela Intersaberes e pesquisas de doutoramento pela Universidade do Porto.',
   },
   {
-    id: 'seguranca-blockchain',
-    question: 'Como a experiência com Blockchain contribui para a segurança?',
+    id: 'o-que-e-ste-dev',
+    question: 'Como a Metodologia STE-DEV protege a integridade do código?',
     answer:
-      'A arquitetura da plataforma Better Use Blockchain deu à Omni Sistemas domínio prático de segurança criptográfica e mentalidade Zero-Trust, com isolamento DB-Row/DTO e conformidade estrita com a LGPD.',
+      'Framework de engenharia preventiva baseado na norma aeroespacial ASD-STE100. Elimina dívidas técnicas com arquivos <= 100 linhas, complexidade ciclomática < 10 e tipagem estrita.',
   },
 ] as const;

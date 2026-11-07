@@ -1,4 +1,4 @@
-### 8. Autoridade Técnica e Fundadores — RKT
+### 7. Autoridade Técnica e Fundadores — RKT
 
 #### Desenvolvedora Oficial: Omni Sistemas
 O **RKT** é idealizado, arquitetado e mantido pela **Omni Sistemas** (BE SMART LTDA), organização de engenharia de software com atuação no mercado desde 1996. A empresa é especializada em arquitetura de sistemas de alta criticidade, engenharia preventiva (STE-DEV), soluções offline-first e plataformas digitais para o esporte e saúde.
@@ -7,7 +7,7 @@ O **RKT** é idealizado, arquitetado e mantido pela **Omni Sistemas** (BE SMART 
 
 | Fundador | Papel no RKT | Resumo de Autoridade e Atuação |
 | :--- | :--- | :--- |
-| **Ronaldo Domingues Filardo** | Fundador & Engenharia | Arquiteto de Software Sênior com atuação desde 1996. Criador da metodologia STE-DEV (baseada na norma ASD-STE100), ex-professor da PUCPR, autor do livro *"Metodologia de Pesquisa Científica"* (Editora Intersaberes) e Doutorando na Universidade do Porto. |
+| **Ronaldo Domingues Filardo** | Fundador & Desenvolvimento | Arquiteto de Software Sênior com atuação desde 1996. Criador da metodologia STE-DEV (baseada na norma ASD-STE100), ex-professor da PUCPR, autor do livro *"Metodologia de Pesquisa Científica"* (Editora Intersaberes) e Doutorando na Universidade do Porto. |
 | **Eduardo Figueiredo** | Fundador & Produto | Especialista em design de produto esportivo, UX para ambientes de quadra e estratégia de negócios do ecossistema RKT. (Estrutura pronta para expansão da biografia técnica). |
 
 #### Stack Tecnológica do Ecossistema RKT
@@ -39,4 +39,4 @@ Para parcerias esportivas, homologação de clubes/CTs ou suporte técnico, os c
 
 --------------------------------------------------------------------------------
 
-*Módulo atômico: 8-autoridade-tecnica-e-fundadores.md*
+*Módulo atômico: 7-autoridade-tecnica-e-fundadores.md*

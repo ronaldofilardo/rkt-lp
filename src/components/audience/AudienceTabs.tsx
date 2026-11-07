@@ -37,7 +37,8 @@ export function AudienceTabs({ activeTab, setActiveTab }: Props) {
         role="tabpanel"
         id={`panel-${card.id}`}
         aria-labelledby={`tab-${card.id}`}
-        className="mt-6 space-y-4 rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-5"
+        key={card.id}
+        className="audience-tab-pane mt-6 space-y-4 rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-5"
       >
         <div className="space-y-3">
           <dt className="font-mono text-xs uppercase tracking-widest text-telemetry-volt">

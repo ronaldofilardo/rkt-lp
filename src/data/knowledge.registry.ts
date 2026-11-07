@@ -67,16 +67,8 @@ export const KNOWLEDGE_MODULES: readonly KnowledgeModule[] = [
     openQuestions: ['Decidir se perfis operacionais (anotador, suporte, admin) entram no texto público.'],
   },
   {
-    id: 'privacidade',
-    file: '7-sobre-ronaldo-domingues-filardo.md',
-    title: 'Sobre Ronaldo Domingues Filardo',
-    summary: 'Perfil, formação acadêmica e trajetória técnica de Ronaldo Domingues Filardo, fundador de engenharia do RKT.',
-    status: 'publicado',
-    openQuestions: ['Confirmar a redação "doutoramento em Portugal" (concluído ou em curso).'],
-  },
-  {
     id: 'autoridade-e-fundadores',
-    file: '8-autoridade-tecnica-e-fundadores.md',
+    file: '7-autoridade-tecnica-e-fundadores.md',
     title: 'Autoridade técnica e fundadores',
     summary: 'Perfis de Ronaldo Domingues Filardo e Eduardo Figueiredo e histórico da Omni Sistemas.',
     status: 'publicado',

@@ -22,11 +22,15 @@ export function AudienceTable() {
         </thead>
         <tbody>
           {AUDIENCE_CARDS.map((card) => (
-            <tr key={card.id}>
+            <tr key={card.id} className="audience-table-row group transition-colors duration-150 hover:bg-telemetry-border/5">
               <th
                 scope="row"
-                className="border-b border-telemetry-border/10 px-3 py-4 align-top text-sm font-semibold text-telemetry-text-primary"
+                className="relative border-b border-telemetry-border/10 px-3 py-4 align-top text-sm font-semibold text-telemetry-text-primary transition-transform duration-150 group-hover:translate-x-0.5"
               >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-y-2 left-0 w-0.5 rounded-full bg-telemetry-volt opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+                />
                 {card.title}
                 {card.path ? (
                 <Link

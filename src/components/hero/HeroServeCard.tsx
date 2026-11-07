@@ -4,8 +4,8 @@ interface Props { serve: ServeStats; playerInitials: string }
 
 function StatLine({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between gap-3">
-      <span className="text-xs text-telemetry-text-muted">{label}</span>
+    <div className="serve-stat-line flex items-center justify-between gap-3">
+      <span className="serve-stat-label text-xs text-telemetry-text-muted transition-colors">{label}</span>
       <span className="font-mono text-xs font-semibold tabular-nums text-telemetry-text-primary">{value}</span>
     </div>
   );
@@ -13,7 +13,7 @@ function StatLine({ label, value }: { label: string; value: string }) {
 
 export function HeroServeCard({ serve, playerInitials }: Props) {
   return (
-    <div className="w-48 rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-4 shadow-telemetry-float">
+    <div className="hero-serve-card w-48 rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-4 shadow-telemetry-float">
       <div className="mb-3 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-widest text-telemetry-text-muted">Saque</span>
         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-telemetry-volt text-[9px] font-bold text-black">

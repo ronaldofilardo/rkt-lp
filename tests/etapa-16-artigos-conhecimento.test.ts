@@ -40,9 +40,9 @@ test('Artigos: schema JSON-LD Article gerado com author Ronaldo e publisher Omni
   assert.ok(schema.url.includes('/artigos/formatos-oficiais-itf-tenis'));
 });
 
-test('Conhecimento: exatamente 8 módulos carregados e parseados', () => {
+test('Conhecimento: exatamente 7 módulos carregados e parseados', () => {
   const docs = getAllKnowledgeDocs();
-  assert.equal(docs.length, 8);
+  assert.equal(docs.length, 7);
   for (const doc of docs) {
     assert.ok(doc.slug.length > 0);
     assert.ok(doc.title.length > 5);

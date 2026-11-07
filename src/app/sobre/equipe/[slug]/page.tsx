@@ -6,16 +6,15 @@ import { buildPageMetadata } from '@/lib/page-metadata';
 import { buildBreadcrumbListSchema } from '@/lib/seo-schema';
 import { buildWebPageSchema } from '@/lib/seo-schema-pages';
 import { bioForSlug } from '@/lib/team';
-import { CredentialCard } from './CredentialCard';
 import { FaqCard } from './FaqCard';
 import { BioNotFound } from './BioNotFound';
+import { CredentialsSection } from './CredentialsSection';
+import { TimelineSection } from './TimelineSection';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const bio = bioForSlug(slug);
-  if (!bio) {
-    return { title: 'Biografia não encontrada' };
-  }
+  if (!bio) return { title: 'Biografia não encontrada' };
   return buildPageMetadata({
     path: `/sobre/equipe/${slug}`,
     title: `${bio.member.name} — Biografia`,
@@ -27,10 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function EquipeBioPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const bio = bioForSlug(slug);
-  if (!bio) {
-    return <BioNotFound />;
-  }
-
+  if (!bio) return <BioNotFound />;
   const member = bio.member;
 
   return (
@@ -59,41 +55,23 @@ export default async function EquipeBioPage({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-3 py-12 sm:px-4 md:py-20 lg:px-6">
-        <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt mb-8 text-center sm:text-left">
-          Credenciais e formação profissional
-        </p>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <CredentialCard
-            title="Formação acadêmica"
-            body="Professor universitário (graduação e especialização) da Pontifícia Universidade Católica do Paraná, lecionando Metodologia de Pesquisa Científica. Autor do livro “Metodologia de Pesquisa Científica: fundamentos, princípios e processos”, Editora Intersaberes. Pesquisas de doutoramento em Portugal."
-          />
-          <CredentialCard
-            body="Fundador da Omni Sistemas e criador da STE-DEV. Iniciou em 1996 com o software ANTHROPO em VBA, acumulando 30 anos de arquiteturas em saúde, finanças, esportes e blockchain. Domínio prático de segurança criptográfica e mentalidade Zero-Trust."
-            title="Trajetória técnica"
-          />
-          <CredentialCard
-            body="Framework de engenharia preventiva baseado na norma aeroespacial ASD-STE100. Elimina dívida técnica na origem com módulos de menos de 100 linhas, vocabulário controlado, Clean Architecture e SOLID, zero-any e auditoria formal para sistemas legados."
-            title="Metodologia STE-DEV"
-          />
-          <CredentialCard
-            body="Semântica ASD-STE100 (um conceito, um nome), Arquitetura Limpa & SOLID (camadas desacopladas), Desenvolvimento Preventivo (máximo 100 linhas por arquivo, zero-any, try/catch em I/O) e Engenharia Reversa & Auditoria (inventário de violações por linha, plano atômico em 5 passos)."
-            title="4 pilares da engenharia preventiva"
-          />
-        </div>
-      </section>
-
-      {member.id === 'ronaldo' && RONALDO_QA.length > 0 && (
-        <section className="mx-auto max-w-5xl px-3 py-12 sm:px-4 md:py-20 lg:px-6">
-          <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt mb-8 text-center sm:text-left">
-            Perguntas frequentes
-          </p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {RONALDO_QA.map((item) => (
-              <FaqCard key={item.id} question={item.question} answer={item.answer} />
-            ))}
-          </div>
-        </section>
+      {member.id === 'ronaldo' && (
+        <>
+          <TimelineSection />
+          <CredentialsSection />
+          {RONALDO_QA.length > 0 && (
+            <section className="mx-auto max-w-5xl px-3 py-10 sm:px-4 md:py-16 lg:px-6">
+              <p className="font-mono text-xs uppercase tracking-widest text-telemetry-volt mb-8 text-center sm:text-left">
+                Perguntas frequentes
+              </p>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {RONALDO_QA.map((item) => (
+                  <FaqCard key={item.id} question={item.question} answer={item.answer} />
+                ))}
+              </div>
+            </section>
+          )}
+        </>
       )}
     </ContentShell>
   );

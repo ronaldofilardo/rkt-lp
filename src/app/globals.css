@@ -27,6 +27,16 @@
 
   --telemetry-glow-volt: 0 0 12px rgba(204, 255, 0, 0.28);
   --telemetry-glow-blue: 0 0 12px rgba(37, 99, 235, 0.30);
+
+  /* ── Tokens de movimento (tema-agnósticos) ─────────────────
+     Ritmo único da página: easing de bola desacelerando,
+     quique curto para confirmação e saída mais rápida que a entrada. */
+  --rkt-ease-rally: cubic-bezier(0.22, 1, 0.36, 1);
+  --rkt-ease-bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --rkt-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --rkt-dur-fast: 160ms;
+  --rkt-dur-base: 280ms;
+  --rkt-dur-slow: 520ms;
 }
 
 @media (prefers-color-scheme: light) {
@@ -93,6 +103,87 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ══════════════════════════════════════════════════════════
+   TRANSIÇÃO GLOBAL DE TEMA (claro ↔ escuro)
+   Aplicada em * para cobrir todos os componentes presentes
+   e futuros sem necessidade de manutenção de lista.
+   O bloco prefers-reduced-motion abaixo zera tudo para
+   usuários que preferem sem movimento.
+═══════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 2s ease,
+    color            2s ease,
+    border-color     2s ease,
+    fill             2s ease,
+    stroke           2s ease,
+    box-shadow       2s ease;
+}
+
+/* ── Overrides: interações não herdam o timing de tema ─────
+   Cada seletor restaura o timing original do componente
+   para que hovers, aberturas e animações permaneçam ágeis. */
+
+/* Botões e links: resposta rápida ao hover/focus */
+button,
+a {
+  transition:
+    color            var(--rkt-dur-fast) var(--rkt-ease-rally),
+    background-color var(--rkt-dur-fast) var(--rkt-ease-rally),
+    border-color     var(--rkt-dur-fast) var(--rkt-ease-rally),
+    opacity          var(--rkt-dur-fast) var(--rkt-ease-rally),
+    box-shadow       var(--rkt-dur-fast) var(--rkt-ease-rally),
+    transform        var(--rkt-dur-fast) var(--rkt-ease-rally);
+}
+
+/* FAQ body: grid 0fr → 1fr (timing original preservado) */
+.faq-body {
+  transition: grid-template-rows var(--rkt-dur-fast) var(--rkt-ease-exit) !important;
+}
+details[open] .faq-body {
+  transition: grid-template-rows var(--rkt-dur-base) var(--rkt-ease-rally) !important;
+}
+
+/* Hero CTA: transform + box-shadow rápidos no hover */
+.hero-cta-button {
+  transition:
+    transform     var(--rkt-dur-fast) var(--rkt-ease-bounce),
+    box-shadow    var(--rkt-dur-base) var(--rkt-ease-rally),
+    border-color  var(--rkt-dur-base) var(--rkt-ease-rally) !important;
+}
+
+/* Hero Serve Card */
+.hero-serve-card {
+  transition:
+    transform  var(--rkt-dur-base) var(--rkt-ease-rally),
+    box-shadow var(--rkt-dur-base) var(--rkt-ease-rally) !important;
+}
+.serve-stat-line {
+  transition: color var(--rkt-dur-fast) var(--rkt-ease-rally) !important;
+}
+
+/* Step line (how-it-works) */
+.step-item-active .step-line {
+  transition:
+    background-color 200ms var(--rkt-ease-rally),
+    box-shadow       200ms var(--rkt-ease-rally) !important;
+}
+
+/* Scroll progress fill: transform de scaleX (via JS fallback) */
+.scroll-progress-fill {
+  transition: transform 75ms ease-out !important;
+}
+
+/* Scroll progress track: background/border não devem arrastar 2s */
+.scroll-progress-track {
+  transition:
+    background-color var(--rkt-dur-base) var(--rkt-ease-rally),
+    border-color     var(--rkt-dur-base) var(--rkt-ease-rally),
+    box-shadow       var(--rkt-dur-base) var(--rkt-ease-rally) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
@@ -123,15 +214,22 @@ html {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/*
+  O atraso é dado por `animation-range`, não por `animation-delay`:
+  em animações scroll-driven o eixo é a rolagem, então um atraso em
+  segundos não tem conversão uniforme entre navegadores. Deslocar o
+  intervalo de entrada produz stagger determinístico.
+  A rampa de 40% da viewport é mantida; só o ponto de partida muda.
+*/
 @supports (animation-timeline: scroll()) {
   .reveal {
     animation: reveal-up 0.6s ease-out forwards;
     animation-timeline: view();
     animation-range: entry 0% entry 40%;
   }
-  .reveal-delay-1 { animation-delay: 0.08s; }
-  .reveal-delay-2 { animation-delay: 0.16s; }
-  .reveal-delay-3 { animation-delay: 0.24s; }
+  .reveal-delay-1 { animation-range: entry 6%  entry 46%; }
+  .reveal-delay-2 { animation-range: entry 12% entry 52%; }
+  .reveal-delay-3 { animation-range: entry 18% entry 58%; }
 }
 
 @supports not (animation-timeline: scroll()) {
@@ -421,12 +519,17 @@ html {
 }
 
 /* ══════════════════════════════════════════════════════════
-   STEP CIRCLES — acendem ao entrar na viewport
+   STEP CIRCLES & PROGRESS — Linha Viva (Fase 3)
 ═══════════════════════════════════════════════════════════ */
 @keyframes step-glow {
   0%   { box-shadow: 0 0 0 0   rgba(204,255,0,0.7); transform: scale(0.6); opacity: 0; }
   60%  { box-shadow: 0 0 0 10px rgba(204,255,0,0);  transform: scale(1.1); opacity: 1; }
   100% { box-shadow: 0 0 0 0   rgba(204,255,0,0);   transform: scale(1);   opacity: 1; }
+}
+
+@keyframes step-count-pop {
+  0%   { opacity: 0; transform: translateY(4px) scale(0.85); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @supports (animation-timeline: scroll()) {
@@ -445,6 +548,53 @@ html {
     animation-timeline: view();
     animation-range: entry 5% entry 35%;
   }
+
+  /* Linha de progresso orientada a scroll CSS nativo */
+  @keyframes line-scroll-fill {
+    from {
+      width: 0%;
+    }
+    to {
+      width: calc(100% * var(--progress-max, 1));
+    }
+  }
+
+  @keyframes ball-scroll-travel {
+    from {
+      transform: translateX(-4px);
+    }
+    to {
+      transform: translateX(calc(100% * var(--progress-max, 1) - 4px));
+    }
+  }
+
+  .how-progress-line {
+    animation-timeline: view();
+  }
+
+  .how-progress-line .how-progress-fill {
+    animation: line-scroll-fill linear forwards;
+    animation-timeline: view();
+    animation-range: entry 20% cover 60%;
+  }
+
+  .how-progress-line .progress-ball {
+    animation: ball-scroll-travel linear forwards;
+    animation-timeline: view();
+    animation-range: entry 20% cover 60%;
+  }
+}
+
+/* Ativação sequencial por useInViewOnce */
+.step-item-active .step-number {
+  display: inline-block;
+  animation: step-count-pop 400ms var(--rkt-ease-bounce) both;
+}
+
+.step-item-active .step-line {
+  background-color: rgba(var(--telemetry-volt), 0.35);
+  box-shadow: 0 0 6px rgba(var(--telemetry-volt), 0.2);
+  transition: background-color 200ms var(--rkt-ease-rally), box-shadow 200ms var(--rkt-ease-rally);
 }
 
 @supports not (animation-timeline: scroll()) {
@@ -456,7 +606,17 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .step-circle,
   .step-circle-delay-1,
-  .step-circle-delay-2 { animation: none !important; opacity: 1 !important; }
+  .step-circle-delay-2,
+  .how-progress-line .how-progress-fill,
+  .how-progress-line .progress-ball,
+  .step-item-active .step-number {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .how-progress-line .how-progress-fill {
+    width: calc(100% * var(--progress-max, 1)) !important;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -509,8 +669,37 @@ html {
   100% { box-shadow: 0 0 0 0   rgba(37,99,235,0); }
 }
 
+@keyframes btn-volt-shimmer {
+  0%, 100% {
+    filter: drop-shadow(0 0 0 rgba(var(--telemetry-volt), 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(var(--telemetry-volt), 0.7));
+  }
+}
+
+.final-cta-bg {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--telemetry-surface)) 0%,
+    rgb(var(--telemetry-active))  40%,
+    rgba(var(--telemetry-blue),  0.18) 70%,
+    rgba(var(--telemetry-volt),  0.07) 100%
+  );
+  background-size: 300% 300%;
+  animation: cta-gradient 9s ease infinite;
+}
+
+@supports (animation-timeline: view()) {
+  .final-cta-bg {
+    will-change: background-position;
+  }
+}
+
 .btn-cta-primary {
-  animation: btn-pulse-ring 2.8s ease-out infinite;
+  animation:
+    btn-pulse-ring 2.8s ease-out infinite,
+    btn-volt-shimmer 4s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -710,4 +899,286 @@ body[data-theme="light"] .scroll-progress-track {
   border: 0;
   border-top: 1px solid rgba(var(--telemetry-border), 0.1);
   margin: 2rem 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   HERO — ABERTURA DE PARTIDA (FASE 2)
+═══════════════════════════════════════════════════════════ */
+
+/* 1. Chips de abertura (stagger 60ms) */
+@keyframes hero-chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-chip {
+  opacity: 0;
+  animation: hero-chip-in var(--rkt-dur-slow) var(--rkt-ease-rally) forwards;
+}
+
+.hero-chip-1 { animation-delay: 40ms; }
+.hero-chip-2 { animation-delay: 100ms; }
+.hero-chip-3 { animation-delay: 160ms; }
+
+/* 2. Wipe de máscara no H1 */
+@keyframes hero-word-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.2;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+.hero-word-wipe {
+  display: inline-block;
+  will-change: clip-path, opacity;
+  animation: hero-word-wipe 420ms var(--rkt-ease-rally) 120ms both;
+}
+
+.hero-word-wipe-delay {
+  animation-delay: 240ms;
+}
+
+/* 3. CTA primário do Hero */
+.hero-cta-button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--rkt-dur-fast) var(--rkt-ease-bounce),
+    box-shadow var(--rkt-dur-base) var(--rkt-ease-rally),
+    border-color var(--rkt-dur-base) var(--rkt-ease-rally);
+}
+
+.hero-cta-button:hover {
+  box-shadow: inset 0 0 0 1px rgb(var(--telemetry-volt)), 0 0 16px -2px rgba(var(--telemetry-volt), 0.25);
+  border-color: rgb(var(--telemetry-volt));
+}
+
+.hero-cta-button:active {
+  transform: scale(0.97);
+}
+
+/* 4. Scoreboard: entrada das linhas de jogador + pulso de volt no vencedor */
+@keyframes scoreboard-row-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes winner-volt-pulse {
+  0% {
+    text-shadow: 0 0 0 rgba(var(--telemetry-volt), 0);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(var(--telemetry-volt), 0.85);
+  }
+  100% {
+    text-shadow: 0 0 0 rgba(var(--telemetry-volt), 0);
+  }
+}
+
+.scoreboard-row {
+  opacity: 1;
+}
+
+.scoreboard-animated .scoreboard-row-0 {
+  animation: scoreboard-row-slide var(--rkt-dur-slow) var(--rkt-ease-rally) 80ms both;
+}
+
+.scoreboard-animated .scoreboard-row-1 {
+  animation: scoreboard-row-slide var(--rkt-dur-slow) var(--rkt-ease-rally) 160ms both;
+}
+
+.scoreboard-animated .winner-pulse {
+  animation: winner-volt-pulse 600ms var(--rkt-ease-rally) 400ms 1;
+}
+
+/* 5. Serve Card: elevação em hover e destaque do label */
+.hero-serve-card {
+  transition: transform var(--rkt-dur-base) var(--rkt-ease-rally), box-shadow var(--rkt-dur-base) var(--rkt-ease-rally);
+}
+
+.hero-serve-card:hover {
+  transform: translateY(-2px);
+}
+
+.serve-stat-line {
+  transition: color var(--rkt-dur-fast) var(--rkt-ease-rally);
+}
+
+.serve-stat-line:hover .serve-stat-label {
+  color: rgb(var(--telemetry-volt));
+}
+
+/* 6. Quadra de fundo — Parallax sutil ao rolar para fora */
+@supports (animation-timeline: view()) {
+  @keyframes court-exit-parallax {
+    to {
+      transform: translateY(-24px);
+    }
+  }
+
+  .court-parallax-layer {
+    animation: court-exit-parallax linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+}
+
+/* Fallback de acessibilidade (prefers-reduced-motion) para todos os efeitos do Hero */
+@media (prefers-reduced-motion: reduce) {
+  .hero-chip,
+  .hero-word-wipe,
+  .hero-word-wipe-delay,
+  .scoreboard-animated .scoreboard-row-0,
+  .scoreboard-animated .scoreboard-row-1,
+  .scoreboard-animated .winner-pulse,
+  .court-parallax-layer {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    text-shadow: none !important;
+  }
+
+  .hero-cta-button:hover,
+  .hero-cta-button:active,
+  .hero-serve-card:hover {
+    transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   TELEMETRIA — PLACAR QUE SE MONTA (FASE 4)
+═══════════════════════════════════════════════════════════ */
+
+/* 1. Troca de abas com crossfade suave */
+@keyframes tab-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-pane-enter {
+  animation: tab-fade-in var(--rkt-dur-base) var(--rkt-ease-rally) both;
+}
+
+/* 2. Brilho único no topo do badge de placar/duração da telemetria */
+@keyframes telemetry-badge-glow {
+  0% {
+    box-shadow: 0 -2px 0 0 rgba(var(--telemetry-volt), 0);
+  }
+  50% {
+    box-shadow: 0 -2px 10px 1px rgba(var(--telemetry-volt), 0.7);
+  }
+  100% {
+    box-shadow: 0 -2px 0 0 rgba(var(--telemetry-volt), 0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .telemetry-header-badge {
+    animation: telemetry-badge-glow 300ms var(--rkt-ease-rally) forwards;
+    animation-timeline: view();
+    animation-range: entry 10% entry 40%;
+  }
+}
+
+/* Fallback de reduced-motion para telemetria */
+@media (prefers-reduced-motion: reduce) {
+  .tab-pane-enter,
+  .telemetry-header-badge {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .tab-indicator {
+    transition: none !important;
+  }
+  .momentum-dot {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   PARA QUEM — TABELA REATIVA & ABAS MOBILE (FASE 5)
+═══════════════════════════════════════════════════════════ */
+
+/* Crossfade das abas mobile de público */
+@keyframes audience-tab-fade {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.audience-tab-pane {
+  animation: audience-tab-fade 160ms var(--rkt-ease-rally) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audience-tab-pane {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .audience-table-row th,
+  .audience-table-row {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   FAQ — SAQUE SUAVE (FASE 6)
+═══════════════════════════════════════════════════════════ */
+
+/* Transição de altura suave do corpo do FAQ com grid 0fr -> 1fr */
+.faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--rkt-dur-fast) var(--rkt-ease-exit);
+}
+
+details[open] .faq-body {
+  grid-template-rows: 1fr;
+  transition: grid-template-rows var(--rkt-dur-base) var(--rkt-ease-rally);
+}
+
+.faq-body > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-body,
+  details[open] .faq-body,
+  .faq-chevron {
+    transition: none !important;
+  }
 }

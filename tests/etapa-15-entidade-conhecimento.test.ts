@@ -76,9 +76,9 @@ test('security.txt: Contact, Expires futuro (< 1 ano) e Canonical', () => {
 });
 
 /* ── Estrutura de conhecimento (preparada, não gerada) ── */
-test('Conhecimento: 8 módulos numerados, ids e arquivos únicos', () => {
-  assert.equal(KNOWLEDGE_MODULES.length, 8);
-  assert.equal(new Set(KNOWLEDGE_MODULES.map((m) => m.id)).size, 8);
+test('Conhecimento: 7 módulos numerados, ids e arquivos únicos', () => {
+  assert.equal(KNOWLEDGE_MODULES.length, 7);
+  assert.equal(new Set(KNOWLEDGE_MODULES.map((m) => m.id)).size, 7);
   KNOWLEDGE_MODULES.forEach((m, i) => {
     assert.ok(m.file.startsWith(`${i + 1}-`) && m.file.endsWith('.md'), m.file);
     assert.ok(m.summary.length > 20);
@@ -103,7 +103,7 @@ test('Conhecimento: arquivos só existem quando o status deixa de ser "planejado
 
 test('Conhecimento: pendências registradas nos módulos com dúvida conhecida', () => {
   const pend = (id: string) => KNOWLEDGE_MODULES.find((m) => m.id === id)!.openQuestions.length;
-  for (const id of ['motor-de-regras', 'camadas-de-telemetria', 'privacidade', 'autoridade-e-fundadores']) {
+  for (const id of ['motor-de-regras', 'camadas-de-telemetria', 'autoridade-e-fundadores']) {
     assert.ok(pend(id) > 0, id);
   }
 });

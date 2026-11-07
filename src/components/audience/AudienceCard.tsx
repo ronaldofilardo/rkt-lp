@@ -10,23 +10,29 @@ interface Props {
 }
 
 /**
- * Card com tilt sutil no hover (desktop).
- * No mobile não há tilt: o card é estático dentro do carrossel snap.
- * prefers-reduced-motion: transform desativado via CSS.
+ * Card com tilt 3D suave e amortecido no hover (desktop).
+ * Utiliza interpolação com requestAnimationFrame para eliminar saltos bruscos.
+ * prefers-reduced-motion: transform desativado via CSS global.
  */
 export function AudienceCard({ card, signupUrl }: Props) {
   const ref = useRef<HTMLElement>(null);
+  const rafRef = useRef<number | null>(null);
 
   function onMouseMove(e: React.MouseEvent<HTMLElement>) {
     const el = ref.current;
     if (!el) return;
     const { left, top, width, height } = el.getBoundingClientRect();
-    const x = ((e.clientX - left) / width - 0.5) * 8;
-    const y = ((e.clientY - top) / height - 0.5) * -8;
-    el.style.transform = `perspective(600px) rotateY(${x}deg) rotateX(${y}deg)`;
+    const targetX = ((e.clientX - left) / width - 0.5) * 8;
+    const targetY = ((e.clientY - top) / height - 0.5) * -8;
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      el.style.transform = `perspective(600px) rotateY(${targetX.toFixed(2)}deg) rotateX(${targetY.toFixed(2)}deg)`;
+    });
   }
 
   function onMouseLeave() {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     if (ref.current) ref.current.style.transform = '';
   }
 
@@ -35,7 +41,7 @@ export function AudienceCard({ card, signupUrl }: Props) {
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="audience-card flex h-full flex-col gap-4 rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-5 transition-transform duration-150 ease-out will-change-transform sm:p-6"
+      className="audience-card flex h-full flex-col gap-4 rounded-2xl border border-telemetry-border/10 bg-telemetry-card p-5 transition-transform duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform sm:p-6"
       aria-label={`Perfil: ${card.title}`}
     >
       <p className="font-mono text-xs-extra uppercase tracking-widest text-telemetry-volt">

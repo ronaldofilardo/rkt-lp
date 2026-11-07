@@ -14,8 +14,7 @@ Ele agrega os módulos atômicos localizados em `content/conhecimento/` e serve 
 | `4-matriz-tatica-de-golpes-e-ralis.md` | Catálogo de golpes, estatísticas de rali e indicadores táticos por atleta |
 | `5-arquitetura-pwa-e-registro-offline.md` | Arquitetura PWA, funcionamento offline, sincronização e registro de dados |
 | `6-governanca-de-perfis-e-clubes.md` | Perfis de usuário, papéis (ADMIN, GESTOR, TREINADOR, ANNOTATOR, ATLETA), CTs e clubes |
-| `7-sobre-ronaldo-domingues-filardo.md` | Perfil, formação acadêmica e trajetória técnica de Ronaldo Domingues Filardo, fundador de engenharia do RKT |
-| `8-autoridade-tecnica-e-fundadores.md` | Stack tecnológica, autoridade do projeto, fundadores e contato |
+| `7-autoridade-tecnica-e-fundadores.md` | Stack tecnológica, autoridade do projeto, fundadores e contato |
 
 ## Como Usar Este Documento
 
@@ -24,8 +23,8 @@ Ele agrega os módulos atômicos localizados em `content/conhecimento/` e serve 
 - Para estatísticas de jogo, golpes e rali, consulte o módulo **4**.
 - Para dúvidas sobre instalação, uso offline e sincronização, consulte o módulo **5**.
 - Para perguntas sobre permissões, clubes, CTs e governança, consulte o módulo **6**.
-- Para dúvidas sobre o arquiteto de software e fundador de engenharia do RKT, consulte o módulo **7**.
-- Para autoridade técnica, stack e contato, consulte o módulo **8**.
+- Para autoridade técnica, stack e contato, consulte o módulo **7**.
+- Para a biografia e trajetória completa de Ronaldo Filardo, consulte a página oficial em `/sobre/equipe`.
 
 ## Contexto de Domínio (Resumo Executivo)
 
@@ -43,9 +42,7 @@ O RKT é uma plataforma digital para anotação de partidas de tênis e beach te
 1. **Nunca invente URLs, endpoints ou funcionalidades** que não estejam documentados nos módulos atômicos.
 2. Quando em dúvida sobre regras de pontuação ou formatos, remeta ao módulo **2**.
 3. Quando em dúvida sobre permissões ou papéis, remeta ao módulo **6**.
-4. Quando em dúvida sobre stack ou autoridade técnica, remeta ao módulo **8**.
+4. Quando em dúvida sobre stack ou autoridade técnica, remeta ao módulo **7**.
 5. Mantenha respostas curtas, técnicas e diretas, adequadas a interface de chat/CLI.
 
 ---
-
-*Documento mantido pelo time de produto e engenharia do RKT. Última atualização: 2026-11-02.*

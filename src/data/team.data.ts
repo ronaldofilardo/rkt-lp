@@ -14,7 +14,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
   {
     id: 'ronaldo',
     name: 'Ronaldo Filardo',
-    role: 'Fundador & Engenharia',
+    role: 'Fundador & Desenvolvimento',
     initials: 'RF',
     slug: FOUNDER_RONALDO.slug,
     bio: RONALDO_LEAD,

@@ -1,3 +1,6 @@
+'use client';
+
+import { useInViewOnce } from '@/hooks/useInViewOnce';
 import type { Step } from '@/data/how-it-works.data';
 
 interface Props {
@@ -13,17 +16,18 @@ const CIRCLE_CLASS: Record<number, string> = {
 };
 
 export function StepItem({ step, isLast, index }: Props) {
+  const { ref, inView } = useInViewOnce<HTMLLIElement>(0.2);
   const circleClass = CIRCLE_CLASS[index] ?? 'step-circle';
 
   return (
-    <li className="relative flex gap-4 md:flex-col md:gap-0">
+    <li ref={ref} className={`relative flex gap-4 md:flex-col md:gap-0 ${inView ? 'step-item-active' : ''}`}>
       {/* Indicador + linha conectora */}
       <div className="flex flex-col items-center md:flex-row md:items-start">
-        {/* Círculo numerado — acende ao entrar na viewport */}
+        {/* Círculo numerado com borda e preenchimento */}
         <div
-          className={`${circleClass} relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-telemetry-volt bg-telemetry-base font-mono text-sm font-bold text-telemetry-volt`}
+          className={`${circleClass} relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-telemetry-volt bg-telemetry-base font-mono text-sm font-bold text-telemetry-volt transition-colors duration-300`}
         >
-          {step.number}
+          <span className="step-number">{step.number}</span>
         </div>
         {/* Linha conectora */}
         {!isLast && (

@@ -32,7 +32,9 @@ export function MobileStickyCTA() {
 
       <div
         aria-hidden={!visible}
-        className={`sticky-cta fixed inset-x-0 bottom-0 z-40 md:hidden ${visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'} pb-safe transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none`}
+        className={`sticky-cta fixed inset-x-0 bottom-0 z-40 md:hidden ${
+          visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        } pb-safe transition-[transform,opacity] duration-[320ms] ease-[cubic-bezier(0.34,1.4,0.64,1)] motion-reduce:transition-none`}
       >
         <div className="border-t border-telemetry-border/10 bg-telemetry-base/90 px-3 py-3 backdrop-blur-md">
           <a

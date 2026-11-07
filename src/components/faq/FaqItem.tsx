@@ -19,12 +19,16 @@ export function FaqItem({ item }: Props) {
           strokeWidth="2"
           strokeLinecap="round"
           aria-hidden="true"
-          className="shrink-0 transition-transform duration-200 group-open:rotate-180"
+          className="faq-chevron shrink-0 transition-transform duration-[280ms] ease-[cubic-bezier(0.34,1.4,0.64,1)] group-open:rotate-180"
         >
           <path d="M6 9l6 6 6-6" />
         </svg>
       </summary>
-      <p className="pb-4 text-sm leading-relaxed text-telemetry-text-muted">{item.answer}</p>
+      <div className="faq-body">
+        <div className="overflow-hidden">
+          <p className="pb-4 text-sm leading-relaxed text-telemetry-text-muted">{item.answer}</p>
+        </div>
+      </div>
     </details>
   );
 }

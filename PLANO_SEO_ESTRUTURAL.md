@@ -1,7 +1,7 @@
 # 📋 Plano de Implementação: Otimização Estrutural, Grafo e SEO Técnico (RKT)
 
 > **Documento:** `PLANO_SEO_ESTRUTURAL.md`  
-> **Status:** ✅ **Executado em 02/11/2026** — 5 fases concluídas (registro em §6)  
+> **Status:** ✅ **Executado em 02/11/2026** — 5 fases concluídas (registro em §6); Fase 5 estendida ao repositório do sistema em 03/11/2026.  
 > **Escopo:** Exclusivamente arquitetura técnica, SEO/AEO/GEO, links internos, metadados e grafo JSON-LD.  
 > **Exclusões:** A produção e publicação dos módulos em `/conhecimento` e artigos longos em `/artigos` ou `/guia` serão realizadas externamente pelo usuário.  
 > **Diretrizes e Regras:** STE-DEV (R-03: arquivos $\le 100$ linhas), zero presunções não declaradas, baseline de testes verde contínua.
@@ -162,12 +162,12 @@ Toda execução deste plano deverá passar por:
 | **2 — Grafo JSON-LD** | `FAQPage` isolada na home; nó `WebSite` + `publisher` no `SoftwareApplication`; `parentOrganization` com `@id` da Omni Sistemas; `ProfilePage` + `Person` em `/sobre/ronaldo` com `@id` unificado ao nó `founder`; `BreadcrumbList` nas 7 rotas internas. |
 | **3 — Desorfanamento** | `/sobre/ronaldo` em `SITE_PAGES` (sitemap, `llms.txt`, `llms-full.txt`, rodapé); títulos dos cards de público → `/para-*`; links Hero/telemetria → guia e glossário; termos técnicos do guia → âncoras do glossário; bloco "Veja também" em toda página de conteúdo. |
 | **4 — Infraestrutura** | `sitemap.ts` com `mtime` real via `fs.statSync`; `host` removido do `robots.ts`; `PLANO_SEO.md` e `docs/SEO_GEO.md` reconciliados. |
-| **5 — Sistema** | `X-Robots-Tag: noindex, nofollow` em `/app/*` e `/admin/*` via `next.config.mjs`; requisitos restantes do domínio do sistema registrados em `docs/SEO_GEO.md`. |
+| **5 — Sistema** | LP: `X-Robots-Tag: noindex, nofollow` em `/app/*` e `/admin/*` via `next.config.mjs`. Sistema (`C:\apps\RKT`): header replicado no `next.config.ts` para todas as telas autenticadas e fluxos de recuperação; títulos próprios em `/termos`, `/privacidade`, `/login` e `/signup`. |
 
 **Desvios declarados (regra de zero presunções):**
 - **`SearchAction` não foi emitido:** a landing page não possui endpoint de busca — declarar ação para rota inexistente seria dado falso. O nó `WebSite` foi criado com `@id` e `publisher`, conforme a ação 2 desta fase.
 - **`alumniOf` de Ronaldo** aponta para a *Universidade do Porto* (doutoramento documentado em `content/conhecimento/7-sobre-ronaldo-domingues-filardo.md`); nenhuma instituição foi inventada.
 - **Card "Espectador / Pais"** permaneceu sem link de título: não existe página `/para-espectadores` neste escopo.
 - **`SITE_CONFIG.name`** continua "RKT Tennis" (marca de prosa, usada em `llms.txt` e `humans.txt`); a padronização para **RKT** vale para as *tags de título*, conforme a premissa 1.
-- **Pendências no repositório do sistema** (`sistema.rkt-app.com`): replicar o header `X-Robots-Tag` nos fluxos de recuperação e definir títulos próprios para `/termos`, `/privacidade`, `/login` e `/cadastro`.
+- **Pendências no repositório do sistema** (`sistema.rkt-app.com`): ✅ **concluído em 03/11/2026** — header `X-Robots-Tag` replicado em `/admin/*`, nas demais telas autenticadas (espelho do matcher do middleware) e nos fluxos de recuperação (`/forgot`, `/trocar-senha`); títulos próprios definidos para `/termos`, `/privacidade`, `/login` e `/signup` (rota real de cadastro).
 

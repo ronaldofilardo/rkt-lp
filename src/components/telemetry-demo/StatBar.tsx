@@ -1,3 +1,7 @@
+'use client';
+
+import { useInViewOnce } from '@/hooks/useInViewOnce';
+
 interface Props {
   label: string;
   p1Value: number;
@@ -12,12 +16,13 @@ function fmt(v: number, f: 'pct' | 'int') {
 }
 
 export function StatBar({ label, p1Value, p2Value, p1Label, p2Label, format = 'pct' }: Props) {
+  const { ref, inView } = useInViewOnce<HTMLDivElement>(0.15);
   const total = p1Value + p2Value || 1;
   const p1Pct = Math.round((p1Value / total) * 100);
   const p2Pct = 100 - p1Pct;
 
   return (
-    <div className="space-y-1">
+    <div ref={ref} className="space-y-1">
       <div className="flex items-center justify-between text-xs">
         <span className="font-mono font-semibold tabular-nums text-telemetry-volt">
           {fmt(p1Value, format)}
@@ -29,8 +34,8 @@ export function StatBar({ label, p1Value, p2Value, p1Label, p2Label, format = 'p
       </div>
       <div className="flex h-1.5 overflow-hidden rounded-full bg-telemetry-border/10">
         <div
-          className="h-full bg-telemetry-volt transition-[width] duration-700 ease-out"
-          style={{ width: `${p1Pct}%` }}
+          className="h-full bg-telemetry-volt transition-[width] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+          style={{ width: inView ? `${p1Pct}%` : '0%' }}
           aria-label={`${p1Label}: ${fmt(p1Value, format)}`}
         />
         <div

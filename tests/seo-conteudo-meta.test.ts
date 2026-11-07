@@ -83,7 +83,7 @@ test('Artigos: HTML do corpo sem H1 (a página emite o único H1) e descrição 
 /* ── Base de conhecimento ─────────────────────────────── */
 test('Conhecimento: título sem numeração/marca e descrição em prosa (60–155)', () => {
   const docs = getAllKnowledgeDocs();
-  assert.ok(docs.length >= 8);
+  assert.ok(docs.length >= 7);
   for (const d of docs) {
     assert.ok(!/^\d+\./.test(d.title), `${d.slug}: numeração no título`);
     assert.ok(!/RKT(\s+Tennis)?$/i.test(d.title), `${d.slug}: marca no título`);

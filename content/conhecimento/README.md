@@ -16,8 +16,7 @@ content/conhecimento/
 ├── 4-matriz-tatica-de-golpes-e-ralis.md
 ├── 5-arquitetura-pwa-e-registro-offline.md
 ├── 6-governanca-de-perfis-e-clubes.md
-├── 7-sobre-ronaldo-domingues-filardo.md
-└── 8-autoridade-tecnica-e-fundadores.md
+└── 7-autoridade-tecnica-e-fundadores.md
 ```
 
 | # | Módulo | Status | Pendências |
@@ -28,8 +27,7 @@ content/conhecimento/
 | 4 | Matriz de golpes e rallies | publicado | Confirmar limites de rally (1–4, 5–8, 9+) e lista de golpes/direções |
 | 5 | Arquitetura PWA e registro offline | publicado | Confirmar IndexedDB e fila de sincronização no app |
 | 6 | Governança de perfis e clubes | publicado | Decidir se perfis operacionais entram no texto público |
-| 7 | Sobre Ronaldo Domingues Filardo | publicado | Confirmar redação "doutoramento em Portugal" |
-| 8 | Autoridade técnica e fundadores | publicado | "desde 1996" vs "desde 1997"; bio do Eduardo; doutoramento |
+| 7 | Autoridade técnica e fundadores | publicado | "desde 1996" vs "desde 1997"; bio do Eduardo; doutoramento |
 
 ## Como produzir um módulo
 

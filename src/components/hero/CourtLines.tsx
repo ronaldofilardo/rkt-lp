@@ -16,7 +16,7 @@ import { CourtLinesBall } from './CourtLinesBall';
 
 export function CourtLines() {
   return (
-    <div aria-hidden="true" className="court-3d-wrapper absolute inset-0 h-full w-full overflow-hidden">
+    <div aria-hidden="true" className="court-3d-wrapper court-parallax-layer absolute inset-0 h-full w-full overflow-hidden">
       <div className="court-3d-inner absolute inset-0 h-full w-full">
         <svg
           viewBox="0 0 800 440"
