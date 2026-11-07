@@ -52,6 +52,53 @@ test('Hero.tsx aplica classes de stagger e wipe sem split de texto quebrando SEO
   assert.ok(hero.includes('<span className="hero-word-wipe text-telemetry-volt">RKT</span>'));
 });
 
+test('Hero.tsx exibe o replay demonstrativo no CTA no lugar dos cards', () => {
+  const hero = read('src/components/hero/Hero.tsx');
+  const replay = read('src/components/hero/HeroMatchReplay.tsx');
+  const matchReplay = read('src/components/telemetry-demo/MatchReplay.tsx');
+  const telemetry = read('src/components/telemetry-demo/TelemetryDemo.tsx');
+
+  assert.ok(hero.includes('<HeroMatchReplay />'));
+  assert.ok(!hero.includes('HeroArtifacts'));
+  assert.ok(replay.includes('onReportClick={() => setModalOpen(true)}'));
+  assert.ok(matchReplay.includes('{onReportClick && ('));
+  assert.ok(telemetry.includes('<MatchReplay fixture={MATCH_REPLAY_DATA} />'));
+});
+
+test('Hero alinha o replay ao título para que a altura cresça para baixo', () => {
+  const hero = read('src/components/hero/Hero.tsx');
+  const page = read('src/app/page.tsx');
+
+  assert.ok(hero.includes('md:col-start-1 md:row-start-3'));
+  assert.ok(hero.includes('md:col-start-2 md:row-start-3 md:row-span-3'));
+  assert.ok(hero.includes('min-h-[90vh] overflow-hidden'));
+  assert.ok(!hero.includes('absolute'));
+  assert.ok(page.indexOf('<Hero />') < page.indexOf('<KeyTakeaways />'));
+});
+
+test('MatchReplay destaca o confronto e alinha botão ao status da partida', () => {
+  const replay = read('src/components/telemetry-demo/MatchReplay.tsx');
+  const events = read('src/components/telemetry-demo/ReplayEvent.tsx');
+  const statusRow = replay.slice(
+    replay.indexOf('<div className="flex items-center justify-between gap-3">'),
+    replay.indexOf('{/* ── Placar'),
+  );
+
+  assert.ok(statusRow.includes('Ao vivo'));
+  assert.ok(statusRow.includes('onClick={onReportClick}'));
+  assert.ok(replay.includes('text-center'));
+  assert.ok(replay.includes('font-mono text-base font-semibold'));
+  assert.ok(replay.includes('<span className="text-telemetry-text-primary">{p1.name}</span>'));
+  assert.ok(replay.includes('<span className="text-telemetry-volt">{p2.name}</span>'));
+  assert.ok(replay.includes('text-telemetry-volt">{p2.name}</p>'));
+  assert.ok(replay.includes('Último ponto'));
+  assert.ok(replay.includes('justify-between gap-3 border-b'));
+  assert.ok(events.includes("event.winner === 'p1' ? 'text-left' : 'text-right'"));
+  assert.ok(events.includes("event.winner === 'p1' ? 'justify-start' : 'justify-end'"));
+  assert.ok(events.includes("event.winner === 'p1' ? 'text-telemetry-text-primary' : 'text-telemetry-volt'"));
+  assert.ok(events.includes('font-mono text-sm text-telemetry-text-primary'));
+});
+
 test('HeroScoreboard.tsx integra useInViewOnce e classes de animação', () => {
   const sb = read('src/components/hero/HeroScoreboard.tsx');
   assert.ok(sb.includes("'use client'"));
@@ -66,4 +113,3 @@ test('HeroServeCard.tsx integra classes de hover reativo', () => {
   assert.ok(sc.includes('serve-stat-line'));
   assert.ok(sc.includes('serve-stat-label'));
 });
-

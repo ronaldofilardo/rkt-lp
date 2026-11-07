@@ -40,16 +40,30 @@ export function ReplayEvent({ event, score, winnerInitials, index }: Props) {
       </span>
 
       {/* Corpo: vencedor + label + badges */}
-      <div className="min-w-0 flex-1 space-y-1.5">
-        <p className="truncate font-mono text-xs text-telemetry-text-primary">
-          <span className="font-semibold text-telemetry-volt">{winnerInitials}***</span>
+      <div
+        className={`min-w-0 flex-1 space-y-1.5 ${
+          event.winner === 'p1' ? 'text-left' : 'text-right'
+        }`}
+      >
+        <p className="truncate font-mono text-sm text-telemetry-text-primary">
+          <span
+            className={`font-semibold ${
+              event.winner === 'p1' ? 'text-telemetry-text-primary' : 'text-telemetry-volt'
+            }`}
+          >
+            {winnerInitials}***
+          </span>
           {' · '}
           <span>{event.label.split(' · ')[1] ?? event.label}</span>
         </p>
 
         {/* Badges */}
         {event.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1">
+          <div
+            className={`flex flex-wrap gap-1 ${
+              event.winner === 'p1' ? 'justify-start' : 'justify-end'
+            }`}
+          >
             {event.tags.map((tag) => (
               <span
                 key={tag}

@@ -29,11 +29,12 @@ const INITIAL_DELAY_MS = 1800;
 
 interface Props {
   fixture: MatchReplayFixture;
+  onReportClick?: () => void;
 }
 
 type Phase = 'playing' | 'finished' | 'fading';
 
-export function MatchReplay({ fixture }: Props) {
+export function MatchReplay({ fixture, onReportClick }: Props) {
   const { p1, p2, events, finalScore, winner, formatLabel } = fixture;
 
   const [visibleEvents, setVisibleEvents] = useState<ReplayEvent[]>([]);
@@ -128,29 +129,57 @@ export function MatchReplay({ fixture }: Props) {
       aria-atomic="false"
     >
       {/* ── Cabeçalho ─────────────────────────────────────────── */}
-      <div className="flex items-center justify-between border-b border-telemetry-border/10 px-4 py-3">
-        <div className="min-w-0">
-          <p className="truncate font-mono text-xs font-semibold text-telemetry-text-primary">
-            {p1.name} × {p2.name}
+      <div className="space-y-2 border-b border-telemetry-border/10 px-4 py-3">
+        <div className="text-center">
+          <p className="truncate font-mono text-base font-semibold">
+            <span className="text-telemetry-text-primary">{p1.name}</span>
+            <span className="text-telemetry-text-muted"> × </span>
+            <span className="text-telemetry-volt">{p2.name}</span>
           </p>
-          <p className="font-mono text-[10px] text-telemetry-text-muted">{formatLabel}</p>
+          <p className="font-mono text-xs text-telemetry-text-muted">{formatLabel}</p>
         </div>
 
-        {/* Badge ao vivo / encerrada */}
-        {isFinished ? (
-          <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-telemetry-elevated px-2.5 py-1 font-mono text-[10px] font-semibold text-telemetry-text-muted">
-            Encerrada
-          </span>
-        ) : (
-          <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-telemetry-error/10 px-2.5 py-1 font-mono text-[10px] font-semibold text-telemetry-error">
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-telemetry-error"
-              style={{ animation: 'pillar-pulse 1.4s ease-in-out infinite' }}
-              aria-hidden="true"
-            />
-            Ao vivo
-          </span>
-        )}
+        <div className="flex items-center justify-between gap-3">
+          {/* Badge ao vivo / encerrada */}
+          {isFinished ? (
+            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-telemetry-elevated px-2.5 py-1 font-mono text-xs font-semibold text-telemetry-text-muted">
+              Encerrada
+            </span>
+          ) : (
+            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-telemetry-error/10 px-2.5 py-1 font-mono text-xs font-semibold text-telemetry-error">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-telemetry-error"
+                style={{ animation: 'pillar-pulse 1.4s ease-in-out infinite' }}
+                aria-hidden="true"
+              />
+              Ao vivo
+            </span>
+          )}
+
+          {onReportClick && (
+            <button
+              type="button"
+              onClick={onReportClick}
+              className="flex shrink-0 items-center gap-1.5 rounded-full border border-telemetry-border/20 bg-telemetry-active px-2.5 py-1.5 font-mono text-xs font-semibold text-telemetry-text-primary transition-colors hover:border-telemetry-volt/40 hover:text-telemetry-volt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-telemetry-blue"
+            >
+              Ver relatório
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* ── Placar ────────────────────────────────────────────── */}
@@ -158,7 +187,7 @@ export function MatchReplay({ fixture }: Props) {
         <div className="flex items-center justify-between">
           {/* Jogador 1 */}
           <div className="text-left">
-            <p className="font-mono text-xs text-telemetry-text-muted">{p1.name}</p>
+            <p className="font-mono text-sm text-telemetry-text-muted">{p1.name}</p>
             <p
               className={`font-mono text-2xl font-bold tabular-nums ${
                 isFinished && winner === 'p1'
@@ -172,7 +201,7 @@ export function MatchReplay({ fixture }: Props) {
 
           {/* Separador */}
           <div className="text-center">
-            <p className="font-mono text-xs text-telemetry-text-muted">
+            <p className="font-mono text-sm text-telemetry-text-muted">
               {isFinished ? 'Final' : `Atualizado há ${elapsedSec}s`}
             </p>
             <p className="font-mono text-lg text-telemetry-text-muted">–</p>
@@ -180,13 +209,9 @@ export function MatchReplay({ fixture }: Props) {
 
           {/* Jogador 2 */}
           <div className="text-right">
-            <p className="font-mono text-xs text-telemetry-text-muted">{p2.name}</p>
+            <p className="font-mono text-sm text-telemetry-volt">{p2.name}</p>
             <p
-              className={`font-mono text-2xl font-bold tabular-nums ${
-                isFinished && winner === 'p2'
-                  ? 'text-telemetry-volt'
-                  : 'text-telemetry-text-primary'
-              }`}
+              className="font-mono text-2xl font-bold tabular-nums text-telemetry-volt"
             >
               {currentScore.split('–')[1] ?? '0'}
             </p>
@@ -202,23 +227,25 @@ export function MatchReplay({ fixture }: Props) {
       </div>
 
       {/* ── Último ponto ──────────────────────────────────────── */}
-      <div className="border-b border-telemetry-border/10 px-4 py-2">
+      <div className="flex items-center justify-between gap-3 border-b border-telemetry-border/10 px-4 py-2">
+        <span className="shrink-0 font-mono text-sm text-telemetry-text-muted">
+          Último ponto
+        </span>
         {visibleEvents.length > 0 ? (
-          <p className="truncate font-mono text-xs text-telemetry-text-muted">
-            Último ponto ·{' '}
-            <span className="text-telemetry-text-primary">
+          <p className="flex min-w-0 items-center justify-end gap-1.5 font-mono text-sm text-telemetry-text-primary">
+            <span className="truncate">
               {visibleEvents[visibleEvents.length - 1].label}
             </span>
             {!isFinished && (
               <span
-                className="ml-1.5 inline-block h-1.5 w-1.5 rounded-full bg-telemetry-volt align-middle"
+                className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-telemetry-volt"
                 style={{ animation: 'pillar-pulse 1.4s ease-in-out infinite' }}
                 aria-hidden="true"
               />
             )}
           </p>
         ) : (
-          <p className="font-mono text-xs text-telemetry-text-muted">Aguardando pontos…</p>
+          <p className="truncate font-mono text-xs text-telemetry-text-muted">Aguardando pontos…</p>
         )}
       </div>
 
