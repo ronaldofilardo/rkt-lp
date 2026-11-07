@@ -28,6 +28,17 @@ test('Header e HeaderNav possuem suporte a scroll reativo e pílula de navegaç�
   assert.ok(nav.includes('aria-current'));
 });
 
+test('Navegação não aponta para a seção Telemetria removida da home', () => {
+  const config = read('src/config/site.config.ts');
+  const footer = read('src/components/footer/Footer.tsx');
+  const page = read('src/app/page.tsx');
+
+  assert.ok(!config.includes("{ label: 'Telemetria', href: '#telemetria' }"));
+  assert.ok(!footer.includes('/#telemetria'));
+  assert.ok(!footer.includes('Painel de Telemetria'));
+  assert.ok(!page.includes('TelemetryDemo'));
+});
+
 test('MobileStickyCTA possui animação com overshoot bounce', () => {
   const cta = read('src/components/cta/MobileStickyCTA.tsx');
   assert.ok(cta.includes('cubic-bezier(0.34,1.4,0.64,1)'));
@@ -39,4 +50,3 @@ test('globals.css possui animações da Fase 7 (volt shimmer e gradient)', () =>
   assert.ok(css.includes('cta-gradient'));
   assert.ok(css.includes('will-change: background-position'));
 });
-

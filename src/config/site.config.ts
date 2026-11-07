@@ -27,7 +27,6 @@ export const SITE_CONFIG = {
     { label: 'O que é', href: '#o-que-e' },
     { label: 'Como Funciona', href: '#como-funciona' },
     { label: 'Para Quem', href: '#para-quem' },
-    { label: 'Telemetria', href: '#telemetria' },
     { label: 'FAQ', href: '#faq' },
   ],
 } as const;

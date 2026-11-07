@@ -58,7 +58,7 @@ test('Footer: description não está vazio', () => {
 test('Todas as origens de CTA são únicas entre si', () => {
   const origens = [
     'lp_header', 'lp_hero', 'lp_audience', 'lp_broadcast',
-    'lp_telemetria', 'lp_footer', 'lp_sticky_cta', 'lp_final_cta',
+    'lp_footer', 'lp_sticky_cta', 'lp_final_cta',
   ];
   assert.equal(new Set(origens).size, origens.length, 'Origens duplicadas detectadas');
 });

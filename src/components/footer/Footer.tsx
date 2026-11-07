@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { label: 'Para Treinadores', href: '/para-treinadores' },
   { label: 'Para Gestores de CT', href: '/para-gestores' },
   { label: 'Como Funciona', href: '/#como-funciona' },
-  { label: 'Painel de Telemetria', href: '/#telemetria' },
 ] as const;
 
 const SHORT_LABEL: Record<string, string> = {

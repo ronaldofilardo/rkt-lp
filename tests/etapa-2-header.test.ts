@@ -26,7 +26,7 @@ test('Menu: hashes únicos, com "#", e na mesma ordem da página', () => {
   const ids = SITE_CONFIG.navLinks.map((link) => hashToId(link.href));
   assert.ok(SITE_CONFIG.navLinks.every((link) => link.href.startsWith('#')));
   assert.equal(new Set(ids).size, ids.length);
-  assert.deepEqual(ids, ['o-que-e', 'como-funciona', 'para-quem', 'telemetria', 'faq']);
+  assert.deepEqual(ids, ['o-que-e', 'como-funciona', 'para-quem', 'faq']);
 });
 
 test('Tema: preferência salva vence o dispositivo; sem ela, segue o dispositivo', () => {

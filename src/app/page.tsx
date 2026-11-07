@@ -6,7 +6,6 @@ import { KeyTakeaways } from '@/components/takeaways/KeyTakeaways';
 import { TelemetryPillars } from '@/components/pillars/TelemetryPillars';
 import { HowItWorks } from '@/components/how-it-works/HowItWorks';
 import { TargetAudience } from '@/components/audience/TargetAudience';
-import { TelemetryDemo } from '@/components/telemetry-demo/TelemetryDemo';
 import { Paixao } from '@/components/emotional/Paixao';
 import { ShareBlock } from '@/components/share/ShareBlock';
 import { FAQ } from '@/components/faq/FAQ';
@@ -29,7 +28,6 @@ export default function HomePage() {
         <TelemetryPillars />
         <HowItWorks />
         <TargetAudience />
-        <TelemetryDemo />
         <ShareBlock />
         <FAQ />
         <ConhecimentoArtigos />

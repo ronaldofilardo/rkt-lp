@@ -56,13 +56,14 @@ test('Hero.tsx exibe o replay demonstrativo no CTA no lugar dos cards', () => {
   const hero = read('src/components/hero/Hero.tsx');
   const replay = read('src/components/hero/HeroMatchReplay.tsx');
   const matchReplay = read('src/components/telemetry-demo/MatchReplay.tsx');
-  const telemetry = read('src/components/telemetry-demo/TelemetryDemo.tsx');
+  const page = read('src/app/page.tsx');
 
   assert.ok(hero.includes('<HeroMatchReplay />'));
   assert.ok(!hero.includes('HeroArtifacts'));
   assert.ok(replay.includes('onReportClick={() => setModalOpen(true)}'));
   assert.ok(matchReplay.includes('{onReportClick && ('));
-  assert.ok(telemetry.includes('<MatchReplay fixture={MATCH_REPLAY_DATA} />'));
+  assert.ok(!page.includes('TelemetryDemo'));
+  assert.ok(!page.includes('<TelemetryDemo />'));
 });
 
 test('Hero alinha o replay ao título para que a altura cresça para baixo', () => {

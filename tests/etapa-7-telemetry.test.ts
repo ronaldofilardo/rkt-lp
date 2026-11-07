@@ -1,7 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { MOCK_MATCH_DATA } from '../src/data/mock-match.data.ts';
-import { buildSignupUrl } from '../src/config/site.config.ts';
 
 const s1 = MOCK_MATCH_DATA.serve.player1;
 const s2 = MOCK_MATCH_DATA.serve.player2;
@@ -9,12 +8,6 @@ const r1 = MOCK_MATCH_DATA.returnStats.player1;
 const r2 = MOCK_MATCH_DATA.returnStats.player2;
 const pr1 = MOCK_MATCH_DATA.pressure.player1;
 const pr2 = MOCK_MATCH_DATA.pressure.player2;
-
-test('TelemetryDemo: CTA "Criar sua conta" envia origem=lp_telemetria', () => {
-  const url = buildSignupUrl({ origem: 'lp_telemetria' });
-  assert.ok(url.includes('origem=lp_telemetria'));
-  assert.ok(url.includes('/signup'));
-});
 
 test('TelemetryPanel – Saque: firstServePct está entre 0 e 100', () => {
   assert.ok(s1.firstServePct >= 0 && s1.firstServePct <= 100);
@@ -62,12 +55,12 @@ test('TelemetryPanel – Momentum: longestWinningStreak >= 1', () => {
   assert.ok(MOCK_MATCH_DATA.momentum.longestWinningStreak >= 1);
 });
 
-test('TelemetryDemo: placar tem 3 partes separadas por " · "', () => {
+test('Fixture da partida demonstrativa: placar tem 3 partes separadas por " · "', () => {
   const parts = MOCK_MATCH_DATA.scoreSummary.sets.split(' · ');
   assert.equal(parts.length, 3);
 });
 
-test('TelemetryDemo: duração é positiva', () => {
+test('Fixture da partida demonstrativa: duração é positiva', () => {
   assert.ok(MOCK_MATCH_DATA.duration.totalMinutes > 0);
   assert.ok(MOCK_MATCH_DATA.duration.effectivePlayMinutes > 0);
   assert.ok(
