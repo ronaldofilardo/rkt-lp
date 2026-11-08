@@ -4,12 +4,12 @@ export const RONALDO_PAGE: PageMeta = {
   path: '/sobre/equipe',
   title: 'Equipe e Fundadores do RKT Tennis',
   description:
-    'Conheça a equipe RKT Tennis: Ronaldo Filardo, arquiteto desde 1996, e Eduardo Figueiredo, produto. Fundadores da plataforma de telemetria esportiva.',
+    'Conheça a equipe RKT Tennis: Ronaldo Filardo, arquiteto desde 1996, e Eduardo Figueiredo, produto. Fundadores da plataforma de estatísticas de partida.',
   ogType: 'website',
 };
 
 export const RONALDO_LEAD =
-  'Arquiteto de software por trás do RKT Tennis. Atua em engenharia de software desde 1996, é autor de livro acadêmico sobre metodologia de pesquisa científica e criador da metodologia STE-DEV, e traz rigor universitário e disciplina de engenharia para a plataforma de telemetria esportiva.';
+  'Arquiteto de software por trás do RKT Tennis. Atua em engenharia de software desde 1996, é autor de livro acadêmico sobre metodologia de pesquisa científica e criador da metodologia STE-DEV, e traz rigor universitário e disciplina de engenharia para a plataforma de estatísticas de partida e evolução por evidências.';
 
 export interface TimelineEvent {
   period: string;
@@ -42,7 +42,7 @@ export const RONALDO_TIMELINE: readonly TimelineEvent[] = [
     title: 'Omni Sistemas, STE-DEV & RKT Tennis',
     description:
       'Concepção da metodologia STE-DEV (baseada na ASD-STE100) para engenharia preventiva e arquitetura integral da plataforma RKT Tennis na Omni Sistemas.',
-    link: { label: 'Conhecer Projetos Omni', url: 'https://www.omni-sistemas.com/#projetos' },
+    link: { label: 'www.omni-sistemas.com', url: 'https://www.omni-sistemas.com' },
   },
 ] as const;
 

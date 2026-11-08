@@ -8,7 +8,7 @@ O **RKT** é idealizado, arquitetado e mantido pela **Omni Sistemas** (BE SMART 
 | Fundador | Papel no RKT | Resumo de Autoridade e Atuação |
 | :--- | :--- | :--- |
 | **Ronaldo Domingues Filardo** | Fundador & Desenvolvimento | Arquiteto de Software Sênior com atuação desde 1996. Criador da metodologia STE-DEV (baseada na norma ASD-STE100), ex-professor da PUCPR, autor do livro *"Metodologia de Pesquisa Científica"* (Editora Intersaberes) e Doutorando na Universidade do Porto. |
-| **Eduardo Figueiredo** | Fundador & Produto | Especialista em design de produto esportivo, UX para ambientes de quadra e estratégia de negócios do ecossistema RKT. (Estrutura pronta para expansão da biografia técnica). |
+| **Eduardo Figueiredo** | Fundador & Produto | Especialista em domínio do tênis e produto. Professor e proprietário da Academia de Tênis Figueiredo (integrada à estrutura da Eco Tênis Academia em Curitiba), capacitador CBT desde 1998, treinador ITF nível 1 e 2, CBT Técnico Master e DTB (Alemanha) A/B/C. Instagram: [@tenisintegrativo](https://www.instagram.com/tenisintegrativo/) · YouTube: [@academiadetenisfigueiredo8949](https://www.youtube.com/@academiadetenisfigueiredo8949). |
 
 #### Stack Tecnológica do Ecossistema RKT
 

@@ -23,7 +23,7 @@ export default function ConhecimentoIndexPage() {
             Arquitetura e Fundamentos do RKT
           </h1>
           <p className="text-base text-telemetry-text-muted sm:text-lg">
-            Módulos atômicos que documentam a engenharia de telemetria, motor de pontuação e conformidade do RKT.
+            Módulos atômicos que documentam a engenharia de software, motor de pontuação e conformidade do RKT.
           </p>
         </header>
 

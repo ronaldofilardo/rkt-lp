@@ -2,6 +2,7 @@
 export const ALLOWED_CRAWLERS = [
   'GPTBot',
   'ChatGPT-User',
+  'OAI-SearchBot',
   'OAISearchBot',
   'Google-Extended',
   'ClaudeBot',

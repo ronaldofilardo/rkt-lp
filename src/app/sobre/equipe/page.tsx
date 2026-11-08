@@ -7,6 +7,8 @@ import { buildPageMetadata } from '@/lib/page-metadata';
 import { buildBreadcrumbListSchema } from '@/lib/seo-schema';
 import { buildWebPageSchema } from '@/lib/seo-schema-pages';
 import { RonaldoDetails } from './RonaldoDetails';
+import { EduardoDetails } from './EduardoDetails';
+import { PartnershipTimeline } from './PartnershipTimeline';
 
 export const metadata: Metadata = buildPageMetadata(RONALDO_PAGE);
 
@@ -22,9 +24,11 @@ export default function EquipePage() {
             Equipe RKT
           </h1>
           <p className="text-base text-telemetry-text-muted sm:text-lg">
-            Pessoas por trás da plataforma de telemetria esportiva do RKT Tennis.
+            Pessoas por trás da plataforma de estatísticas de partida e inteligência tática do RKT Tennis.
           </p>
         </header>
+
+        <PartnershipTimeline />
 
         <div className="mt-8 grid items-start gap-8 md:grid-cols-2">
           {TEAM_MEMBERS.map((member) => (
@@ -47,6 +51,7 @@ export default function EquipePage() {
               </p>
 
               {member.id === 'ronaldo' && <RonaldoDetails />}
+              {member.id === 'eduardo' && <EduardoDetails />}
             </div>
           ))}
         </div>

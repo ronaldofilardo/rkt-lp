@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { COMPANY, FOUNDER_RONALDO } from '../src/config/entity.config.ts';
+import { COMPANY, FOUNDER_RONALDO, FOUNDER_EDUARDO } from '../src/config/entity.config.ts';
 import { SITE_CONFIG, buildSupportMailto } from '../src/config/site.config.ts';
 import { ABOUT_QA } from '../src/data/content/about.data.ts';
 import {
@@ -41,7 +41,7 @@ test('Organization: razão social, CNPJ, fundação e fundadores com Lattes', ()
   assert.equal(ronaldo.alternateName, 'Ronaldo Filardo');
   assert.deepEqual(ronaldo.sameAs, [FOUNDER_RONALDO.lattesUrl]);
   assert.equal(eduardo.name, 'Eduardo Figueiredo');
-  assert.ok(!('sameAs' in eduardo), 'sem links inventados para o Eduardo');
+  assert.deepEqual(eduardo.sameAs, [FOUNDER_EDUARDO.instagramUrl, FOUNDER_EDUARDO.youtubeUrl]);
 });
 
 test('Rodapé: CNPJ, razão social e link de suporte', () => {

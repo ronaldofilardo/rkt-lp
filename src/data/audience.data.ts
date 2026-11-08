@@ -19,7 +19,7 @@ export const AUDIENCE_CARDS: readonly AudienceCard[] = [
     title: 'Atletas',
     question: 'Por que meu 1º saque oscila no 3º set?',
     answer:
-      'Deixa de depender da memória pós-jogo e enxerga onde os pontos foram perdidos: saque set a set, aproveitamento e break points.',
+      'Deixa de depender da memória pós-jogo e enxerga onde os pontos foram ganhos e perdidos: saque set a set, aproveitamento e break points.',
     ctaLabel: 'Criar conta como atleta',
   },
   {
@@ -36,16 +36,16 @@ export const AUDIENCE_CARDS: readonly AudienceCard[] = [
     id: 'gestor',
     profile: 'GESTOR',
     path: '/para-gestores',
-    title: 'Centros de Treinamento e Clubes',
+    title: 'Academias e Clubes',
     question: 'Como organizar atletas, treinadores e partidas do clube?',
     answer:
-      'Padroniza o acompanhamento metodológico das equipes: vínculos, aprovações e histórico de partidas em um painel centralizado.',
+      'Organiza atletas, treinadores e partidas em um painel centralizado. O clube controla quem acessa e compartilha partidas com familiares — tudo em segundos.',
     ctaLabel: 'Solicitar cadastro do clube',
   },
   {
     id: 'espectador',
     profile: 'ESPECTADOR',
-    title: 'Famílias e Pais',
+    title: 'Familiares e amigos',
     question: 'Como familiares e amigos acompanham a evolução do tenista?',
     answer:
       'Apoia o desenvolvimento esportivo com dados claros e incentivo positivo, acompanhando partidas públicas autorizadas pelo clube.',

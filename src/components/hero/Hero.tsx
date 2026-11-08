@@ -15,9 +15,9 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-container grid-cols-1 items-start gap-y-6 md:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] md:gap-x-8">
         <div className="flex flex-wrap gap-2">
-          <span className="hero-chip hero-chip-1 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Registro de partidas</span>
-          <span className="hero-chip hero-chip-2 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Telemetria tática</span>
-          <span className="hero-chip hero-chip-3 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Evolução por dados</span>
+          <span className="hero-chip hero-chip-1 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Acompanhamento ao vivo</span>
+          <span className="hero-chip hero-chip-2 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Estatísticas de partida</span>
+          <span className="hero-chip hero-chip-3 rounded-full border border-telemetry-volt/30 bg-telemetry-volt/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-telemetry-volt">Evolução por evidências</span>
         </div>
 
         <Heading
@@ -26,9 +26,11 @@ export function Hero() {
           color="primary"
           className="tracking-tight md:col-start-1 md:row-start-2 sm:text-5xl lg:text-6xl"
         >
-          Você vive o jogo. O{' '}
-          <span className="hero-word-wipe text-telemetry-volt">RKT</span> transforma cada{' '}
-          <span className="hero-word-wipe hero-word-wipe-delay text-telemetry-volt">anotação</span> em evolução.
+          <span className="block">Você vive o jogo.</span>
+          <span className="block">
+            O <span className="hero-word-wipe text-telemetry-volt">RKT</span> transforma cada{' '}
+            <span className="hero-word-wipe hero-word-wipe-delay text-telemetry-volt">anotação</span> em evolução.
+          </span>
         </Heading>
 
         <Text
@@ -37,8 +39,8 @@ export function Hero() {
           as="p"
           className="max-w-md md:col-start-1 md:row-start-3"
         >
-          Substitua a impressão subjetiva do pós-jogo por dados táticos claros de rali, pontos de
-          quebra e aproveitamento de saque — para atletas, treinadores e clubes de tênis.
+          Substitua a impressão subjetiva do pós-jogo por estatísticas de partida e evidências
+          claras de rali, pontos de quebra e aproveitamento de saque — para atletas, treinadores e academias de tênis.
         </Text>
 
         <div className="flex flex-wrap items-center gap-3 md:col-start-1 md:row-start-4">
@@ -51,7 +53,7 @@ export function Hero() {
         </div>
 
         <p className="font-mono text-xs text-telemetry-volt md:col-start-1 md:row-start-5">
-          Cota de 5 partidas sem custos para atletas, treinadores e anotadores · Sem necessidade de cartão.
+          🛡️ Cota de 5 partidas sem custos para atletas, treinadores e anotadores · Sem cartão de crédito.
         </p>
 
         {/* Começa na linha da descrição e cresce dentro do fluxo do Hero. */}

@@ -66,6 +66,9 @@ export function buildOrganizationSchema() {
         '@id': personId(FOUNDER_EDUARDO.slug),
         name: FOUNDER_EDUARDO.name,
         jobTitle: roleOf('eduardo'),
+        description: FOUNDER_EDUARDO.bio,
+        knowsAbout: [...FOUNDER_EDUARDO.knowsAbout],
+        sameAs: [FOUNDER_EDUARDO.instagramUrl, FOUNDER_EDUARDO.youtubeUrl],
       },
     ],
   };

@@ -18,7 +18,7 @@ export const PROFILE_PAGES: readonly ProfilePageData[] = [
     path: '/para-atletas',
     title: 'Estatísticas de Tênis para Atletas',
     description:
-      'Veja sua telemetria de saque, devolução, break points e golpes set a set. O RKT Tennis transforma a anotação da partida em análise tática para o atleta.',
+      'Veja estatísticas de saque, devolução, break points e golpes set a set. O RKT Tennis transforma anotações da partida em evolução por evidências para o atleta.',
     h1: 'Estatísticas de tênis para atletas',
     lead: 'O RKT Tennis mostra ao atleta, ponto a ponto, onde o jogo se decide: aproveitamento de primeiro saque, pontos ganhos na devolução, break points salvos e convertidos, winners e erros. Os dados vêm da anotação feita na quadra e ficam disponíveis logo após o fim da partida.',
     ctaLabel: 'Criar conta como atleta',
@@ -27,7 +27,7 @@ export const PROFILE_PAGES: readonly ProfilePageData[] = [
         id: 'que-estatisticas',
         question: 'Que estatísticas o atleta vê no RKT?',
         answer:
-          'O atleta vê a telemetria de saque set a set, com aproveitamento e pontos ganhos, além de devolução, pontos de pressão como break points salvos e convertidos, e a matriz de golpes com winners, erros forçados e erros não forçados por fundamento.',
+          'O atleta vê as estatísticas de saque set a set, com aproveitamento e pontos ganhos, além de devolução, pontos de pressão como break points salvos e convertidos, e a matriz de golpes com winners, erros forçados e erros não forçados por fundamento.',
       },
       REGISTER,
       MINORS,
@@ -48,13 +48,13 @@ export const PROFILE_PAGES: readonly ProfilePageData[] = [
         id: 'onde-cedeu',
         question: 'Como o treinador descobre onde o atleta cedeu pontos decisivos?',
         answer:
-          'Pela telemetria de pressão e pela matriz de golpes. Os pontos de pressão mostram como o atleta se saiu em break points, game points, set points e tiebreaks, e a matriz de golpes aponta em qual fundamento ele erra ou fecha mais pontos.',
+          'Pelas estatísticas de pontos sob pressão e pela matriz de golpes. Os pontos de pressão mostram como o atleta se saiu em break points, game points, set points e tiebreaks, e a matriz de golpes aponta em qual fundamento ele erra ou fecha mais pontos.',
       },
       {
         id: 'vinculo',
         question: 'O treinador pode trabalhar de forma avulsa ou vinculado a um CT?',
         answer:
-          'Sim. Atletas e treinadores podem se vincular a um clube ou trabalhar de forma avulsa. Quando há vínculo com um CT, o gestor aprova os vínculos. O treinador acompanha a telemetria dos atletas que estão vinculados a ele.',
+          'Sim. Atletas e treinadores podem se vincular a uma academia/clube ou trabalhar de forma avulsa. Quando há vínculo institucional, o gestor aprova os vínculos. O treinador acompanha as estatísticas de partida e a evolução dos atletas que estão vinculados a ele.',
       },
       REGISTER,
     ],

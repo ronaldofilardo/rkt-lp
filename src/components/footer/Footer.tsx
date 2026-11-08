@@ -32,7 +32,7 @@ export function Footer() {
           <div className="space-y-3">
             <BrandLogo size="md" href="/" />
             <Text variant="body" color="muted" as="p" className="max-w-xs">
-              Plataforma de inteligência e telemetria para o tênis. Da formação à alta performance.
+              Plataforma de estatísticas de partida e evolução por evidências para o tênis. Da formação à alta performance.
             </Text>
             <Text variant="caption" color="muted" as="p" className="font-mono">
               🛡️ Desenvolvido por {COMPANY.brandName} • Desde {COMPANY.foundedYear}

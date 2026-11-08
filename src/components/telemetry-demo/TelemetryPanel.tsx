@@ -28,7 +28,7 @@ export function TelemetryPanel({ match }: Props) {
   return (
     <div className="rounded-2xl border border-telemetry-border/10 bg-telemetry-card">
       {/* Tabs */}
-      <div role="tablist" aria-label="Categorias de telemetria" className="relative flex border-b border-telemetry-border/10">
+      <div role="tablist" aria-label="Categorias de estatísticas de partida" className="relative flex border-b border-telemetry-border/10">
         {TABS.map((t) => (
           <button
             key={t.id}

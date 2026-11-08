@@ -19,16 +19,16 @@ export const PILLARS: readonly Pillar[] = [
     id: 'acompanhar',
     number: '02',
     title: 'Acompanhar',
-    subtitle: 'Partidas públicas (em breve)',
+    subtitle: 'Acompanhamento ao vivo (em breve)',
     description:
-      'Familiares e amigos poderão seguir partidas públicas em tempo real. A publicação de cada partida é controlada pelo clube ou treinador responsável.',
+      'Familiares e amigos contam com acompanhamento ao vivo das partidas em tempo real. A publicação de cada partida é controlada pelo clube, treinador ou atleta responsável.',
   },
   {
     id: 'analisar',
     number: '03',
     title: 'Analisar',
-    subtitle: 'Inteligência tática',
+    subtitle: 'Evolução por evidências',
     description:
-      'Telemetria de saque, devolução, pontos de pressão e matriz de golpes — tudo disponível durante e logo após o encerramento da partida.',
+      'Análise das inúmeras situações de jogo, pontos sob pressão, rendimentos de todos os golpes e jogadas – tudo disponível durante e depois da partida.',
   },
 ] as const;

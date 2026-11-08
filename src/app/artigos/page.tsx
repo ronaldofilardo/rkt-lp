@@ -23,7 +23,7 @@ export default function ArtigosIndexPage() {
             Artigos e Análises Técnicas
           </h1>
           <p className="text-base text-telemetry-text-muted sm:text-lg">
-            Guias completos e análises de telemetria baseados nas regras oficiais da ITF e no motor de dados do RKT.
+            Guias completos e análises táticas baseados nas regras oficiais da ITF e nas estatísticas de partida do RKT.
           </p>
         </header>
 

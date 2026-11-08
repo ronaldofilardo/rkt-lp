@@ -38,11 +38,11 @@ export function ShareBlock() {
             id="compartilhar-title"
             className="text-xl font-bold text-telemetry-text-primary sm:text-2xl"
           >
-            Conhece um treinador ou gestor de centro de treinamento?
+            Conhece um treinador ou gestor de academia ou clube?
           </h2>
           <p className="text-sm leading-relaxed text-telemetry-text-muted">
-            Compartilhe a demonstração com dados simulados: ele explora a telemetria em minutos e
-            avalia como o registro ponto a ponto se encaixa na metodologia do clube.
+            Compartilhe a demonstração com dados simulados: ele explora as estatísticas de partida em minutos e
+            avalia como o registro ponto a ponto se encaixa na metodologia da academia ou clube.
           </p>
 
           {/* Fallback sem JS: link selecionável renderizado no HTML estático */}

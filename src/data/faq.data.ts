@@ -9,7 +9,7 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
     id: 'o-que-e-telemetria',
     question: 'O que é telemetria esportiva no tênis?',
     answer:
-      'Telemetria esportiva é a coleta e análise de dados ponto a ponto de uma partida: saque, devolução, pontos de pressão, winners, erros e sequências. No RKT, cada ponto é registrado estruturalmente na quadra e transformado em métricas táticas disponíveis logo após o encerramento da partida.',
+      'Diferente de medições isoladas como velocidade de saque por radar, no RKT a análise consiste na coleta de estatísticas de partida ponto a ponto: saque, devolução, pontos de pressão, ralis e matriz de golpes, gerando relatórios claros para uma verdadeira evolução por evidências.',
   },
   {
     id: 'funciona-offline',
@@ -27,7 +27,7 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
     id: 'modelo-acesso',
     question: 'Como funciona a cota de uso e o modelo de acesso?',
     answer:
-      'Atletas, treinadores particulares e anotadores contam com uma cota de 5 partidas para utilizar o sistema sem custos e avaliar a telemetria na prática, sem precisar de cartão de crédito. As políticas comerciais completas e os planos para centros de treinamento e clubes estão sendo definidos para o lançamento.',
+      'Atletas, treinadores particulares e anotadores contam com uma cota de 5 partidas para utilizar o sistema sem custos e avaliar as estatísticas de partida na prática, sem precisar de cartão de crédito. As políticas comerciais completas e os planos para academias e clubes estão sendo definidos para o lançamento.',
   },
   {
     id: 'uso-web-imediato',
@@ -39,6 +39,6 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
     id: 'levar-ao-clube',
     question: 'Como levar o RKT para o meu clube ou treinador?',
     answer:
-      'Use o botão de compartilhamento desta página para enviar o link ao seu treinador ou gestor do centro de treinamento. Ele poderá explorar a demonstração com dados simulados e avaliar como a telemetria se encaixa na metodologia do clube.',
+      'Use o botão de compartilhamento desta página para enviar o link ao seu treinador ou gestor da academia ou clube. Ele poderá explorar a demonstração com dados simulados e avaliar como as estatísticas de partida e a evolução por evidências se encaixam na metodologia da academia.',
   },
 ] as const;

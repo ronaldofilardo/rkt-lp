@@ -37,7 +37,7 @@ export function ConhecimentoArtigos() {
                 </Link>
               </h3>
               <p className="mt-1 text-sm leading-relaxed text-telemetry-text-muted">
-                Guias profundos de pontuação, formatos ITF, regras No-Ad/Match Tiebreak e telemetria
+                Guias profundos de pontuação, formatos ITF, regras No-Ad/Match Tiebreak e pontos
                 sob pressão — para entender cada métrica por trás dos números.
               </p>
             </div>
@@ -54,7 +54,7 @@ export function ConhecimentoArtigos() {
                 </Link>{' '}
                 e do{' '}
                 <Link href="/glossario" className={BRIDGE}>
-                  glossário de telemetria
+                  glossário de termos
                 </Link>
                 .
               </p>

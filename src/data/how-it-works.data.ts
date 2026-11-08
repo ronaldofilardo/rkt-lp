@@ -18,13 +18,13 @@ export const HOW_IT_WORKS_STEPS: readonly Step[] = [
     number: '02',
     title: 'Processar',
     description:
-      'O RKT processa os registros em telemetria estruturada: mapas de consistência, erros não forçados e break points.',
+      'O RKT processa os registros em estatísticas de partida estruturadas: mapas de consistência, erros não forçados e break points.',
   },
   {
     id: 'evoluir',
     number: '03',
     title: 'Evoluir',
     description:
-      'Ajustes técnicos e táticos guiados pelo histórico real das partidas — você evolui com fatos, não com impressões.',
+      'Ajustes técnicos e táticos guiados pelo histórico real das partidas — evolução por evidências, não por impressões.',
   },
 ] as const;

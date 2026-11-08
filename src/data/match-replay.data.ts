@@ -44,7 +44,7 @@ import type { MatchReplayFixture } from '@/types/replay.types';
 
 export const MATCH_REPLAY_DATA: MatchReplayFixture = {
   matchId: 'cmvzzfgly000cpdwaolt9qsk4',
-  formatLabel: 'Super Tiebreak · 1º a 10 pontos',
+  formatLabel: 'Super Tiebreak',
   p1: { name: 'M***', initials: 'M' },
   p2: { name: 'S***', initials: 'S' },
   initialServer: 'p2', // SonMy sacou primeiro (initialServerId = player2)

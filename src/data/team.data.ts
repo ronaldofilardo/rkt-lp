@@ -1,4 +1,5 @@
 import { RONALDO_LEAD } from './content/ronaldo.data';
+import { EDUARDO_LEAD } from './content/eduardo.data';
 import { FOUNDER_RONALDO, FOUNDER_EDUARDO } from '@/config/entity.config';
 
 export interface TeamMember {
@@ -25,6 +26,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
     role: 'Fundador & Produto',
     initials: 'EF',
     slug: FOUNDER_EDUARDO.slug,
+    bio: EDUARDO_LEAD,
   },
 ] as const;
 

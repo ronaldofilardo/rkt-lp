@@ -8,6 +8,7 @@ import { HOW_IT_WORKS_STEPS } from '@/data/how-it-works.data';
 import { AUDIENCE_CARDS } from '@/data/audience.data';
 import { ABOUT_LEAD, ABOUT_QA } from '@/data/content/about.data';
 import { RONALDO_LEAD, RONALDO_PAGE, RONALDO_QA } from '@/data/content/ronaldo.data';
+import { EDUARDO_LEAD, EDUARDO_QA } from '@/data/content/eduardo.data';
 import { GLOSSARY } from '@/data/content/glossary.data';
 import { GUIDE_LEAD, GUIDE_PAGE, GUIDE_SECTIONS } from '@/data/content/guide.data';
 import { PROFILE_PAGES } from '@/data/content/profiles.data';
@@ -31,6 +32,7 @@ export function buildLlmsFull(): string {
     `## Perguntas frequentes\n${qa(FAQ_ITEMS)}`,
     `## Sobre\n${ABOUT_LEAD}\n\n${qa(ABOUT_QA)}`,
     `## ${RONALDO_PAGE.title} (${base}${RONALDO_PAGE.path})\n${RONALDO_LEAD}\n\n${qa(RONALDO_QA)}`,
+    `## Eduardo Figueiredo — Fundador & Domínio Tênis (${base}/sobre/equipe)\n${EDUARDO_LEAD}\n\n${qa(EDUARDO_QA)}`,
     ...PROFILE_PAGES.map((p) => `## ${p.h1} (${base}${p.path})\n${p.lead}\n\n${qa(p.qa)}`),
     `## Guia: ${GUIDE_PAGE.title.split(' | ')[0]} (${base}${GUIDE_PAGE.path})\n${GUIDE_LEAD}\n\n${qa(GUIDE_SECTIONS)}`,
     `## Glossário (${base}/glossario)\n${qa(GLOSSARY)}`,

@@ -4,18 +4,18 @@ export const ABOUT_PAGE: PageMeta = {
   path: '/sobre',
   title: 'Sobre o RKT Tennis: Quem Somos e Como Funciona',
   description:
-    'Conheça o RKT Tennis, plataforma de telemetria e análise tática de tênis da Omni Sistemas (Curitiba, PR), fundada por Ronaldo Filardo e Eduardo Figueiredo.',
+    'Conheça o RKT Tennis, plataforma de estatísticas de partida da Omni Sistemas (Curitiba, PR), fundada por Ronaldo Filardo e Eduardo Figueiredo.',
 };
 
 export const ABOUT_LEAD =
-  'O RKT Tennis é uma plataforma brasileira de telemetria e inteligência tática para o tênis, desenvolvida pela Omni Sistemas em Curitiba, Paraná. Ela permite anotar partidas ponto a ponto, mesmo offline, e transformar o registro em análise para atletas, treinadores e clubes.';
+  'O RKT Tennis é uma plataforma brasileira de estatísticas de partida e inteligência tática para o tênis, desenvolvida pela Omni Sistemas em Curitiba, Paraná. Ela permite anotar partidas ponto a ponto, mesmo offline, e transformar o registro em evolução por evidências para atletas, treinadores e academias.';
 
 export const ABOUT_QA: readonly QaItem[] = [
   {
     id: 'o-que-e-o-rkt',
     question: 'O que é o RKT Tennis?',
     answer:
-      'O RKT Tennis é uma plataforma web de anotação de partidas e telemetria esportiva. O anotador registra cada ponto no celular e, ao final do jogo, o sistema entrega métricas de saque, devolução, pontos de pressão e matriz de golpes. Há perfis para atleta, treinador, gestor de CT e espectador.',
+      'O RKT Tennis é uma plataforma web de anotação de partidas e estatísticas de jogo. O anotador registra cada ponto no celular e, ao final do jogo, o sistema entrega relatórios de saque, devolução, pontos sob pressão e matriz de golpes. Há perfis para atleta, treinador, gestor de academia e clube, e acompanhamento ao vivo para familiares e amigos.',
   },
   {
     id: 'quem-desenvolve',
@@ -39,6 +39,6 @@ export const ABOUT_QA: readonly QaItem[] = [
     id: 'suporte',
     question: 'Como falar com o suporte do RKT Tennis?',
     answer:
-      'O canal oficial de suporte é o e-mail suporte@omni-sistemas.com. Ele atende dúvidas de atletas, treinadores, gestores de CT e espectadores sobre cadastro, acesso e uso do sistema, e também contatos de imprensa e parcerias com clubes e centros de treinamento.',
+      'O canal oficial de suporte é o e-mail suporte@omni-sistemas.com. Ele atende dúvidas de atletas, treinadores, gestores de CT e espectadores sobre cadastro, acesso e uso do sistema, e também contatos de imprensa e parcerias com clubes e academias.',
   },
 ] as const;

@@ -2,9 +2,9 @@ import type { PageMeta, QaItem } from './page.types';
 
 export const GLOSSARY_PAGE: PageMeta = {
   path: '/glossario',
-  title: 'Glossário de Estatísticas de Tênis e Telemetria',
+  title: 'Glossário de Estatísticas e Termos de Tênis',
   description:
-    'Definições diretas de telemetria no tênis, ponto de pressão, break point salvo, matriz de golpes, momentum e outros termos da análise de partidas do RKT.',
+    'Definições diretas de estatísticas no tênis, ponto de pressão, break point salvo, matriz de golpes, momentum e outros termos da análise de partidas do RKT.',
 };
 
 export const GLOSSARY_LEAD =
@@ -13,9 +13,9 @@ export const GLOSSARY_LEAD =
 export const GLOSSARY: readonly QaItem[] = [
   {
     id: 'telemetria-no-tenis',
-    question: 'O que é telemetria no tênis?',
+    question: 'O que são estatísticas de partida e dados táticos no tênis?',
     answer:
-      'Telemetria no tênis é a coleta sistemática de dados ponto a ponto durante uma partida, como saque, devolução, golpes vencedores, erros e sequências de pontos. Esses dados são transformados em métricas que mostram padrões táticos e ajudam atletas e treinadores a decidir o que treinar.',
+      'Diferente da medição isolada de velocidade por radar, as estatísticas de partida no RKT compreendem a coleta sistemática de dados ponto a ponto: saque, devolução, winners, erros e ralis. Esses registros revelam padrões táticos e embasam a evolução por evidências.',
   },
   {
     id: 'ponto-de-pressao',

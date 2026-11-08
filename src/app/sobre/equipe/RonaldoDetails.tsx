@@ -34,7 +34,16 @@ export function RonaldoDetails() {
             Formação Acadêmica & Científica
           </p>
           <p className="text-[11px] leading-relaxed text-telemetry-text-muted">
-            Professor universitário (graduação e especialização) na PUCPR, lecionando Metodologia de Pesquisa Científica. Autor de livro nacional pela Editora Intersaberes e pesquisas de doutoramento pela Universidade do Porto (Portugal).
+            Professor universitário (graduação e especialização) na PUCPR, lecionando Metodologia de Pesquisa Científica. Autor de{' '}
+            <a
+              href="https://livrariaintersaberes.com.br/produto/metodologia-de-pesquisa-cientifica-fundamentos-principios-e-processos/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-telemetry-volt underline-offset-2 hover:underline"
+            >
+              livro nacional pela Editora Intersaberes
+            </a>{' '}
+            e pesquisas de doutoramento pela Universidade do Porto (Portugal).
           </p>
         </div>
 
@@ -43,7 +52,15 @@ export function RonaldoDetails() {
             Metodologia STE-DEV & RKT
           </p>
           <p className="text-[11px] leading-relaxed text-telemetry-text-muted">
-            Criador do framework preventivo STE-DEV (baseado na norma ASD-STE100). Responsável pela concepção e execução de todo o sistema RKT Tennis, motor de regras puro (<code className="text-telemetry-volt">engine.ts</code>) e arquitetura offline-first.
+            <a
+              href="https://www.omni-sistemas.com/metodologia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-telemetry-volt underline-offset-2 hover:underline"
+            >
+              Criador do framework preventivo STE-DEV
+            </a>{' '}
+            (baseado na norma ASD-STE100). Responsável pela concepção e execução de todo o sistema RKT Tennis, motor de regras puro e arquitetura offline-first.
           </p>
         </div>
       </div>
