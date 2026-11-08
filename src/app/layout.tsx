@@ -30,13 +30,13 @@ const SEO_IMAGE = {
 export const metadata: Metadata = {
   metadataBase: new URL(getCanonicalUrl()),
   title: {
-    default: 'RKT | Telemetria e Inteligência Tática no Tênis',
+    default: 'RKT | Estatísticas de Partida e Inteligência Tática no Tênis',
     template: `%s${TITLE_SUFFIX}`,
   },
+  applicationName: 'RKT',
+  appleWebApp: { title: 'RKT', statusBarStyle: 'default', capable: true },
   description: SITE_CONFIG.description,
-  alternates: {
-    canonical: '/',
-  },
+  alternates: { canonical: '/' },
   openGraph: {
     title: SITE_CONFIG.seoTitle,
     description: SITE_CONFIG.description,
@@ -54,9 +54,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/brand/icon-48.png', sizes: '48x48', type: 'image/png' },
       { url: '/brand/icon-192.png', sizes: '192x192', type: 'image/png' },
     ],
+    shortcut: '/favicon.ico',
     apple: { url: '/brand/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
   },
   robots: {

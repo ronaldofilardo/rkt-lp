@@ -17,7 +17,7 @@ export interface SignupUrlParams {
 
 export const SITE_CONFIG = {
   name: 'RKT Tennis',
-  tagline: 'Telemetria e Inteligência Tática no Tênis',
+  tagline: 'Estatísticas de Partida e Inteligência Tática no Tênis',
   description: SEO.description,
   seoTitle: SEO.title,
   supportEmail: COMPANY.supportEmail,

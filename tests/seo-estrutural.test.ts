@@ -26,7 +26,7 @@ const read = (p: string) => readFileSync(join(root, p), 'utf8');
 /* ── Fase 1: metadados e calibragem SERP ──────────────── */
 test('Título: template canônico "| RKT" e nenhuma página repete a marca', () => {
   const layout = read('src/app/layout.tsx');
-  assert.ok(layout.includes("default: 'RKT | Telemetria e Inteligência Tática no Tênis'"));
+  assert.ok(layout.includes("default: 'RKT | Estatísticas de Partida e Inteligência Tática no Tênis'"));
   assert.ok(layout.includes('template:'));
   assert.equal(formatTitle('Página'), `Página${TITLE_SUFFIX}`);
   for (const page of SITE_PAGES) {
