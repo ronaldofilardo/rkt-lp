@@ -9,8 +9,8 @@ Observação: os números exibidos na landing page são uma demonstração com d
 - [Landing page](https://rkt-app.com/): visão geral do produto, pilares, como funciona, perfis de usuário, demonstração de telemetria e FAQ.
 - [Criar conta](https://sistema.rkt-app.com/signup): cadastro no sistema (atleta, treinador, gestor de CT ou espectador).
 - [Entrar](https://sistema.rkt-app.com/login): acesso de usuários já cadastrados.
-- [Termos de Uso](https://sistema.rkt-app.com/termos)
-- [Política de Privacidade](https://sistema.rkt-app.com/privacidade)
+- [Termos de Uso](https://rkt-app.com/termos)
+- [Política de Privacidade](https://rkt-app.com/privacidade)
 
 ## Conteúdo
 

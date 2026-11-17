@@ -20,7 +20,7 @@ const SHORT_LABEL: Record<string, string> = {
   '/conhecimento': 'Base de Conhecimento',
 };
 
-const EXCLUDED_INSTITUTIONAL_PATHS = ['/glossario', '/guia/estatisticas-de-tenis'];
+const EXCLUDED_INSTITUTIONAL_PATHS = ['/glossario', '/guia/estatisticas-de-tenis', '/termos', '/privacidade'];
 const LINK_CLASS =
   'text-telemetry-text-muted transition-colors hover:text-telemetry-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-telemetry-blue';
 
@@ -86,8 +86,8 @@ export function Footer() {
             © {CURRENT_YEAR} RKT · {COMPANY.legalName} · {COMPANY.city}, {COMPANY.region} 🎾 Todos os direitos reservados.
           </Text>
           <p className="flex gap-4 font-mono text-xs-extra">
-            <a href={buildTermsUrl()} className={LINK_CLASS}>Termos de Uso</a>
-            <a href={buildPrivacyUrl()} className={LINK_CLASS}>Privacidade</a>
+            <Link href={buildTermsUrl()} className={LINK_CLASS}>Termos de Uso</Link>
+            <Link href={buildPrivacyUrl()} className={LINK_CLASS}>Privacidade</Link>
           </p>
         </div>
       </div>

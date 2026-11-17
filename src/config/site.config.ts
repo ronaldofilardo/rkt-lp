@@ -58,11 +58,11 @@ export function buildLoginUrl(): string {
 }
 
 export function buildTermsUrl(): string {
-  return `${getAppBaseUrl()}/termos`;
+  return '/termos';
 }
 
 export function buildPrivacyUrl(): string {
-  return `${getAppBaseUrl()}/privacidade`;
+  return '/privacidade';
 }
 
 export function buildSupportMailto(subject?: string): string {

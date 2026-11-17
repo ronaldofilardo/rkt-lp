@@ -3,6 +3,7 @@ import { GLOSSARY_PAGE } from './glossary.data';
 import { GUIDE_PAGE } from './guide.data';
 import { RONALDO_PAGE } from './ronaldo.data';
 import { PROFILE_PAGES } from './profiles.data';
+import { TERMOS_PAGE, PRIVACY_PAGE } from './legal.data';
 import type { PageMeta } from './page.types';
 
 export const ARTIGOS_HUB_PAGE: PageMeta = {
@@ -28,4 +29,6 @@ export const SITE_PAGES: readonly PageMeta[] = [
   ...PROFILE_PAGES,
   ARTIGOS_HUB_PAGE,
   CONHECIMENTO_HUB_PAGE,
+  TERMOS_PAGE,
+  PRIVACY_PAGE,
 ];

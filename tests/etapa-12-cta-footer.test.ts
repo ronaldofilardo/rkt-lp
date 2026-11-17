@@ -32,18 +32,14 @@ test('Footer: signup envia origem=lp_footer', () => {
   assert.ok(url.includes('origem=lp_footer'));
 });
 
-test('Footer: Termos de Uso aponta para o domínio do sistema, não da LP', () => {
+test('Footer: Termos de Uso aponta para a rota interna da LP', () => {
   const termsUrl = buildTermsUrl();
-  const lpBase = SITE_CONFIG.defaultCanonicalUrl;
-  assert.ok(!termsUrl.startsWith(lpBase), 'Termos não deve apontar para a LP');
-  assert.ok(termsUrl.includes('/termos'), 'URL deve conter /termos');
+  assert.equal(termsUrl, '/termos');
 });
 
-test('Footer: Privacidade aponta para o domínio do sistema, não da LP', () => {
+test('Footer: Privacidade aponta para a rota interna da LP', () => {
   const privacyUrl = buildPrivacyUrl();
-  const lpBase = SITE_CONFIG.defaultCanonicalUrl;
-  assert.ok(!privacyUrl.startsWith(lpBase), 'Privacidade não deve apontar para a LP');
-  assert.ok(privacyUrl.includes('/privacidade'), 'URL deve conter /privacidade');
+  assert.equal(privacyUrl, '/privacidade');
 });
 
 test('Footer: domínio do sistema e da LP são diferentes', () => {

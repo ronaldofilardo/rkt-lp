@@ -19,4 +19,6 @@ export const BREADCRUMBS: Readonly<Record<string, readonly Crumb[]>> = {
   '/para-gestores': [{ name: 'Para gestores de CT', path: '/para-gestores' }],
   '/artigos': [{ name: 'Artigos', path: '/artigos' }],
   '/conhecimento': [{ name: 'Conhecimento', path: '/conhecimento' }],
+  '/termos': [{ name: 'Termos de Uso', path: '/termos' }],
+  '/privacidade': [{ name: 'Política de Privacidade', path: '/privacidade' }],
 };
